@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "0.10"
+services:
+  - postgresql
+addons:
+  postgresql: "9.3"
+notifications:
+  email: false
+script:
+  - npm run syntax
+  - npm test
+before_script:
+  - psql -c 'create database evernode_test;' -U postgres
+  - cd test/scripts; ./create-db.sh evernode_test; cd ../..;
+after_script:
+  - npm run coveralls
+env:
+  global:
+    - DATABASE_URL=postgres://postgres@localhost/evernode_test
+    - AWS_BUCKET=chyld-evernode-test
+    # AWS_SECRET_ACCESS_KEY
+    - secure: "GwK1w6C9fKAHS9Op77UIt6UlZbwh6iVtctjlKiGdQAJ5GoGYpImo6jRua0E8aAZbepQdYzI/QBEkpQV0LdvUPAHwcFUds0ootFN2LiAKE/0jboFtFJQyEE0/OFE4hiCIN8KZ+Gho9D8mA5XdgaLqlvZirW7AtuFdqESKeJUJpnQ="
+    # AWS_ACCESS_KEY_ID
+    - secure: "l6dI5STwfxIxsqKLPzn+HYdHc9zMKYangi3USD8z9chvmiaYOrajeUglZP1teN3kS8DD6+tJodNIYckHv2YVYwai0DPrZM02hwKLSFuXG5YcXXb3Ly2mbrR364MacgtV17V/BSx7YTYhqk8JSEk0Yr4OcnNkux83h6TWzDL7tMw="
