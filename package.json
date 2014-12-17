@@ -1,0 +1,61 @@
+{
+  "name": "trainer",
+  "version": "1.0.0",
+  "description": "A HIIT personal training application to be used with the companion mobile app",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "main": "server/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "bin": {
+    "coveralls": "./node_modules/coveralls/bin/coveralls.js"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "postinstall": "grunt deploy",
+    "syntax": "grunt build",
+    "test": "make test",
+    "coveralls": "make test-cov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ABarnhard/trainer.git"
+  },
+  "author": "Adam Barnhard <admbarn@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ABarnhard/trainer/issues"
+  },
+  "homepage": "https://github.com/ABarnhard/trainer",
+  "dependencies": {
+    "aws-sdk": "^2.1.2",
+    "bcrypt": "^0.8.0",
+    "bower": "^1.3.12",
+    "good": "^5.0.0",
+    "good-console": "^3.0.2",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-jade": "^0.13.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-less": "^0.12.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs": "^1.0.0",
+    "grunt-shell": "^1.1.1",
+    "hapi": "^8.0.0",
+    "hapi-auth-cookie": "^2.0.0",
+    "joi": "^5.0.2",
+    "jshint-stylish": "^1.0.0",
+    "lout": "^6.0.1",
+    "pg": "^4.1.1",
+    "request": "^2.51.0"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "coveralls": "^2.11.2",
+    "lab": "^5.1.0"
+  }
+}
