@@ -11,15 +11,15 @@ script:
   - npm run syntax
   - npm test
 before_script:
-  - psql -c 'create database evernode_test;' -U postgres
-  - cd test/scripts; ./create-db.sh evernode_test; cd ../..;
+  - psql -c 'create database trainer_test;' -U postgres
+  - cd test/scripts; ./create-db.sh trainer_test; cd ../..;
 after_script:
   - npm run coveralls
 env:
   global:
-    - DATABASE_URL=postgres://postgres@localhost/evernode_test
-    - AWS_BUCKET=chyld-evernode-test
+    - DATABASE_URL=postgres://postgres@localhost/trainer_test
+    - AWS_BUCKET=ab-trainer-test
     # AWS_SECRET_ACCESS_KEY
-    - secure: "GwK1w6C9fKAHS9Op77UIt6UlZbwh6iVtctjlKiGdQAJ5GoGYpImo6jRua0E8aAZbepQdYzI/QBEkpQV0LdvUPAHwcFUds0ootFN2LiAKE/0jboFtFJQyEE0/OFE4hiCIN8KZ+Gho9D8mA5XdgaLqlvZirW7AtuFdqESKeJUJpnQ="
+    - secure: "hDxMsB2NuJzuGQTUiKJ/Mky//PcXPMIVLa5Ye6yvTD3wzfvg/bm4juQQw0+5o114ytB625PWIh/vVb8d/z/JAqLnavS87WhzN6kvf/N/F6yTwZxq7MoCNMTsFrITLT/iYWWpnbV1wdZsSn3TodEOtPi666t4FF6nPZfGKgIyGt4="
     # AWS_ACCESS_KEY_ID
-    - secure: "l6dI5STwfxIxsqKLPzn+HYdHc9zMKYangi3USD8z9chvmiaYOrajeUglZP1teN3kS8DD6+tJodNIYckHv2YVYwai0DPrZM02hwKLSFuXG5YcXXb3Ly2mbrR364MacgtV17V/BSx7YTYhqk8JSEk0Yr4OcnNkux83h6TWzDL7tMw="
+    - secure: "hGdnpHkEbBgjgQl0m6ZdxxU91HQVhtB1PyqF2CvCLWS5XSFQiduKUspU2jOyCj60QzXeHILt0qZ/WWtCkWLYw9Z4wa/SwpneVWtpRDpnJGU+ByQQTNa4+2o9T7YhTzGSltZWglbhrhXEhdRZdHDcf2TvvuZkMpAb72CgsOBfAVc="
