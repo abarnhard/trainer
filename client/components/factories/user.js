@@ -2,10 +2,21 @@
   'use strict';
 
   angular.module('trainer')
-    .factory('User', ['$http', function($http){
+    .factory('User', ['$http', '$upload', function($http, $upload){
 
-      function register(user){
-        return $http.post('/register', user);
+      function register(user, avatar){
+        if(avatar){
+          var userData = {
+            url: '/register',
+            method: 'POST',
+            data: user,
+            file: avatar,
+            fileFormDataName: 'avatar'
+          };
+          return $upload.upload(userData);
+        }else{
+          return $http.post('/register', user);
+        }
       }
 
       function login(user){

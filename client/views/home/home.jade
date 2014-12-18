@@ -1,1 +1,7 @@
-h3 HOME
+.row(ng-show='!rootuser')
+  .small-12.columns
+    h3 HOME
+    img(src='/assets/img/motivation.jpg')
+.row(ng-show='rootuser')
+  .small-12.columns
+    h3 Logged In, spot for dashboard stats

@@ -14,9 +14,9 @@ html.no-js(ng-app='trainer', lang='en')
     #wrap
       #main
         include views/nav/nav
-        .row
-          .small-12.columns
-            div(ui-view)
+        include views/main/main
+    #footer
+      include views/footer/footer
 
     script(src='/vendor/jquery/dist/jquery.min.js')
     script(src='/vendor/foundation/js/foundation.min.js')
@@ -25,10 +25,11 @@ html.no-js(ng-app='trainer', lang='en')
     script(src='/vendor/ng-file-upload/angular-file-upload-all.min.js')
     script(src='/index.js')
     script(src='/components/factories/user.js')
-    script(src='/views/users/users.js')
     script(src='/views/nav/nav.js')
+    script(src='/views/users/users.js')
+    script(src='/views/footer/footer.js')
     script(src='/views/home/home.js')
     script(src='/analytics.js')
-        
+
     script.
       $(document).foundation();
