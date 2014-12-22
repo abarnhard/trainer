@@ -8,8 +8,8 @@ module.exports = {
   tags:['users'],
   validate: {
     payload: {
-      username: Joi.string().min(3).max(12).required(),
-      password: Joi.string().min(3).required()
+      email: Joi.string().min(4).required(),
+      password: Joi.string().min(4).required()
     }
   },
   cors:{origin: ['http://localhost:8100'],credentials: true},

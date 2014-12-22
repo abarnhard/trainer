@@ -5,20 +5,16 @@
     .factory('User', ['$http', '$upload', function($http, $upload){
 
       function register(user, avatar){
-        console.log('USER:', user);
-        console.log('AVATAR:', avatar);
-        if(avatar){
-          var userData = {
-            url: '/register',
-            method: 'POST',
-            data: user,
-            file: avatar,
-            fileFormDataName: 'file'
-          };
-          return $upload.upload(userData);
-        }else{
-          return $http.post('/register', user);
-        }
+        // console.log('USER:', user);
+        // console.log('AVATAR:', avatar);
+        var userData = {
+          url: '/register',
+          method: 'POST',
+          data: user,
+          file: avatar,
+          fileFormDataName: 'file'
+        };
+        return $upload.upload(userData);
       }
 
       function login(user){
