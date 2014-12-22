@@ -12,10 +12,10 @@ html.no-js(ng-app='trainer', lang='en')
     script(src='/vendor/foundation/js/vendor/modernizr.js')
   body
     #wrap
-      #main
+      #main(ng-cloak)
         include views/nav/nav
         include views/main/main
-    #footer
+    #footer(ng-cloak)
       include views/footer/footer
 
     script(src='/vendor/jquery/dist/jquery.min.js')

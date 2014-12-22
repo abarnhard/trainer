@@ -1,13 +1,11 @@
-.row
+.row(ng-cloak)
   .small-12.columns
-    nav.top-bar(data-topbar, role="navigation", ng-controller='NavCtrl')
+    nav.top-bar(ng-cloak, data-topbar, role="navigation", ng-controller='NavCtrl')
       ul.title-area
         li.name
-          h1
-            a(ui-sref='home') ngTrainer
+          h1: a(ui-sref='home') ngTrainer
         li.toggle-topbar.menu-icon
-          a(href="/#/")
-            span
+          a(href="/#/"): span
       section.top-bar-section(ng-cloak)
         ul.right(ng-show='!rootuser.username')
           li: a(ui-sref='home') Home
@@ -15,6 +13,7 @@
           li: a(ui-sref='login') Login
         ul.right(ng-show='rootuser.username')
           li: a(ui-sref='home') Home
-          li: a(ui-sref='notes.list') Notes
+          li: a(ui-sref='schedule') Schedule
+          li: a(ui-sref='workouts.index') Workouts
           li.divider
           li: a#avatarlink(ng-click='logout()'): img#avatarimg(ng-src='{{rootuser.avatar}}')
