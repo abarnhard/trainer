@@ -1,11 +1,12 @@
-/*
-INSERT INTO users (username,password,avatar,token) VALUES ('a1','b','c','d');
-INSERT INTO users (username,password,avatar,token) VALUES ('a2','b','c','d');
-INSERT INTO users (username,password,avatar,token) VALUES ('a3','b','c','d');
+
+INSERT INTO users (username,email,password,avatar,token) VALUES ('a1','b1','c','d','e');
+INSERT INTO users (username,email,password,avatar,token) VALUES ('a2','b2','c','d','e');
+INSERT INTO users (username,email,password,avatar,token) VALUES ('a3','b3','c','d','e');
 DELETE FROM users;
 
-INSERT INTO users (id,username,password,avatar,token) VALUES (1,'bob','$2a$08$nCUsVXX7i7kMK7IuFIQMOOhZR4MGOlRSTd7aWL01jO7JsEiPGPUAW','https://s3.amazonaws.com/adam-evernote-test/token/avatar.png','token');
+INSERT INTO users (id,username,email,password,avatar,token) VALUES (1,'bob','bob@aol.com','$2a$08$WY0ZTWQos6v7yaDANVugr.H3y2yzcLPv9Kw97.pxl8WmSYlWEsg6e','https://s3.amazonaws.com/ab-trainer-test/generic_avatar.png','000000000000000000000001');
 
+/*
 INSERT INTO notes (title, body, user_id) values ('a1', 'b', 1);
 INSERT INTO notes (title, body, user_id) values ('a2', 'b', 1);
 INSERT INTO notes (title, body, user_id) values ('a3', 'b', 1);
