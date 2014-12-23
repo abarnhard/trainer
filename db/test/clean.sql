@@ -1,0 +1,11 @@
+DELETE FROM excercises_sets;
+DELETE FROM excercises;
+DELETE FROM types;
+DELETE FROM days;
+DELETE FROM sets_workouts;
+DELETE FROM sets;
+DELETE FROM workouts;
+DELETE FROM phases_regimes;
+DELETE FROM phases;
+DELETE FROM regimes;
+DELETE FROM users;

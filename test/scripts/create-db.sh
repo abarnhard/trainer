@@ -6,12 +6,13 @@ if [ -z "$1" ] ; then
 fi
 
 psql $1 -f ../../db/tables/users.sql
-psql $1 -f ../../db/tables/notes.sql
-psql $1 -f ../../db/tables/photos.sql
-psql $1 -f ../../db/tables/tags.sql
-psql $1 -f ../../db/tables/notes_tags.sql
-
-psql $1 -f ../../db/functions/add_note.sql
-psql $1 -f ../../db/functions/nuke_note.sql
-psql $1 -f ../../db/functions/show_note.sql
-psql $1 -f ../../db/functions/query_notes.sql
+psql $1 -f ../../db/tables/regimes.sql
+psql $1 -f ../../db/tables/phases.sql
+psql $1 -f ../../db/tables/phases_regimes.sql
+psql $1 -f ../../db/tables/workouts.sql
+psql $1 -f ../../db/tables/sets.sql
+psql $1 -f ../../db/tables/sets_workouts.sql
+psql $1 -f ../../db/tables/days.sql
+psql $1 -f ../../db/tables/types.sql
+psql $1 -f ../../db/tables/excercises.sql
+psql $1 -f ../../db/tables/excercises_sets.sql
