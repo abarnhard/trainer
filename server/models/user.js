@@ -42,15 +42,15 @@ User.register = function(obj, cb){
 
 User.login = function(obj, cb){
   pg.query('SELECT * FROM users WHERE email = $1 LIMIT 1', [obj.email], function(err, results){
-    if(err || !results.rowCount){return cb(err || 'ERROR: INVALID CREDENTIALS');}
+    if(err || !results.rowCount){return cb(err || 'ERROR: INVALID CREDENTIALS', null);}
 
     var isAuth = bcrypt.compareSync(obj.password, results.rows[0].password);
-    if(!isAuth){return cb('ERROR: INVALID CREDENTIALS');}
+    if(!isAuth){return cb('ERROR: INVALID CREDENTIALS', null);}
 
     var user = results.rows[0],
         userObject = {id:user.id, username: user.username, email:user.email, avatar: user.avatar};
 
-    cb(userObject);
+    cb(null, userObject);
   });
 };
 

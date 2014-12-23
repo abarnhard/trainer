@@ -15,7 +15,8 @@ module.exports = {
   cors:{origin: ['http://localhost:8100'],credentials: true},
   auth: false,
   handler: function(request, reply){
-    User.login(request.payload, function(user){
+    User.login(request.payload, function(err, user){
+      if(err){console.log(err);}
       if(!user){return reply().code(401);}
       request.auth.session.set(user);
       reply(user);
