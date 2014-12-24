@@ -1,3 +1,5 @@
+/* global browser */
+
 'use strict';
 
 exports.getdb = function(){
