@@ -28,7 +28,7 @@ User.register = function(obj, cb){
 
     var userObject = {id:results.rows[0].id, username: user.username, email:user.email, avatar: user.avatar};
 
-    console.log(userObject);
+    // console.log(userObject);
 
     if(!obj.file){return cb(null, userObject);}
 
