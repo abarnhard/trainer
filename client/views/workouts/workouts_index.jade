@@ -1,7 +1,23 @@
 .row
-  .columns.small-3
-    h1 Regimes
-  .columns.small-9
+  .columns.small-12
+    .row.padded-row
+      .columns.small-6
+        .row.collapse
+          .small-9.columns
+            input(type='text', ng-model='regime', placeholder='New Regime')
+          .small-3.columns
+            a.button.postfix(href='', ng-click='createRegime(regime)') Add Regime
+      .columns.small-6
+        .row.collapse
+          .small-9.columns
+            input(type='text', ng-model='phase', placeholder='New Phase')
+          .small-3.columns
+            a.button.postfix(href='', ng-click='createPhase(phase)') Add Phase
     .row
       .columns.small-12
-        h1 This is where the workouts will go
+        ul
+          li Regime
+        ul
+          li Phase
+
+
