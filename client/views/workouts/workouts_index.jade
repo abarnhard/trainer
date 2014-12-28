@@ -6,13 +6,21 @@
           .small-9.columns
             input(type='text', ng-model='regime', placeholder='New Regime')
           .small-3.columns
-            a.button.postfix(href='', ng-click='createRegime(regime)') Add Regime
+            a.button.postfix(href='', ng-click='createRegime(regime)') Add
       .columns.small-6
         .row.collapse
           .small-9.columns
             input(type='text', ng-model='phase', placeholder='New Phase')
           .small-3.columns
-            a.button.postfix(href='', ng-click='createPhase(phase)') Add Phase
+            a.button.postfix(href='', ng-click='createPhase(phase)') Add
+    .row.padded-row
+      .columns.small-6
+        .row.collapse
+          .small-9.columns
+            input(type='text', ng-model='excercise', placeholder='New Excercise')
+          .small-3.columns
+            a.button.postfix(href='', ng-click='createExcercise(excercise)') Add
+      .columns.small-6
     .row
       .columns.small-12
         ul
