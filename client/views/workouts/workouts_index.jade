@@ -5,7 +5,7 @@
         select(ng-model='regime', name='regime', ng-options='r as r.name for r in regimes | orderBy:\'name\'')
           option(value='') Select a Regime
       .small-1.columns
-        a.button.success.postfix(href='', ng-click='createRegime(regime)') +
+        a.button.success.postfix(href='', data-reveal-id='regimeModal') +
       .small-1.columns
         | &nbsp;
       .small-4.columns
@@ -31,5 +31,4 @@
                   | &nbsp;
                 p(ng-show='workouts.length') List of all workouts in phase
                 p(ng-show='!workouts.length') Add a workout!
-
 
