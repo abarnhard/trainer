@@ -17,7 +17,7 @@
       if($scope.userForm.$valid){
         if($state.current.name === 'register'){
           User.register($scope.user, $scope.avatar[0]).then(function(res){
-            console.log(res.data);
+            // console.log(res.data);
             $rootScope.rootuser = res.data;
             $state.go('home');
           }, function(res){

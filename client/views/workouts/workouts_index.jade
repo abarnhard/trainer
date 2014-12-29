@@ -21,9 +21,9 @@
       .columns.small-12
         form(ng-show='regime')
           fieldset
-            legend {{regime}}
+            legend {{regime.name}}
             fieldset(ng-show='phase')
-              legend {{phase}}
+              legend {{phase.name}}
               fieldset
                 legend
                   | Workouts &nbsp;

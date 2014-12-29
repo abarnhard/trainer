@@ -8,6 +8,8 @@
       $scope.workouts = [];
       $scope.regime = null;
 
+      queryRegimes();
+
       $scope.initRegime = function(){
         $('#regimeModal').foundation('reveal', 'open');
       };
@@ -16,7 +18,7 @@
         Workout.createRegime(regime).then(function(res){
           $('#regimeModal').foundation('reveal', 'close');
           $scope.newRegime = '';
-          // queryRegimes();
+          queryRegimes();
         }, function(res){
           console.log('Something broke adding that regime', res);
           $('#regimeModal').foundation('reveal', 'close');
@@ -25,8 +27,9 @@
 
       function queryRegimes(){
         Workout.getRegimes().then(function(res){
-          $scope.regimes = res.data.regimes;
+          $scope.regimes = res.data;
         });
       }
+
     }]);
 })();

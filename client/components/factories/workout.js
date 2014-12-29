@@ -5,11 +5,13 @@
     .factory('Workout', ['$http', function($http){
 
       function createRegime(regime){
-        var body = {name: regime};
-        console.log(body);
-        return $http.post('/regimes', body);
+        return $http.post('/regimes', {name: regime});
       }
 
-      return {createRegime:createRegime};
+      function getRegimes(){
+        return $http.get('/regimes');
+      }
+
+      return {createRegime:createRegime, getRegimes:getRegimes};
     }]);
 })();
