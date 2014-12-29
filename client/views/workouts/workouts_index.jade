@@ -1,35 +1,35 @@
 .row
   .columns.small-12
-    .row.padded-row
-      .columns.small-6
-        .row.collapse
-          .small-9.columns
-            input(type='text', ng-model='regime', placeholder='New Regime')
-          .small-3.columns
-            a.button.postfix(href='', ng-click='createRegime(regime)') Add
-      .columns.small-6
-        .row.collapse
-          .small-9.columns
-            input(type='text', ng-model='phase', placeholder='New Phase')
-          .small-3.columns
-            a.button.postfix(href='', ng-click='createPhase(phase)') Add
-    .row.padded-row
-      .columns.small-6
-        .row.collapse
-          .small-9.columns
-            input(type='text', ng-model='excercise', placeholder='New Workout')
-          .small-3.columns
-            a.button.postfix(href='', ng-click='createExcercise(excercise)') Add
-      .columns.small-6
+    .row.collapse.padded-row
+      .small-4.columns
+        select(ng-model='regime', name='regime', ng-options='r as r.name for r in regimes | orderBy:\'name\'')
+          option(value='') Select a Regime
+      .small-1.columns
+        a.button.success.postfix(href='', ng-click='createRegime(regime)') +
+      .small-1.columns
+        | &nbsp;
+      .small-4.columns
+        div(ng-show='regime')
+          select(ng-model='phase', name='phase', ng-options='p as p.name for p in phases | orderBy:\'name\'')
+            option(value='') Select a Phase
+      .small-1.columns
+        div(ng-show='regime')
+          a.button.success.postfix(href='', ng-click='createPhase(phase)') +
+      .small-1.columns
+        | &nbsp;
     .row
       .columns.small-12
-        form
+        form(ng-show='regime')
           fieldset
-            legend Regime
-            fieldset
+            legend {{regime}}
+            fieldset(ng-show='phase')
               legend Phase
               fieldset
-                legend Workout
-                p stuff to build workouts goes here
+                legend
+                  | Workouts &nbsp;
+                  a.label.success.round(href='', ng-click='createPhase(phase)') +
+                  | &nbsp;
+                p(ng-show='workouts.length') List of all workouts in phase
+                p(ng-show='!workouts.length') Add a workout!
 
 
