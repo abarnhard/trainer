@@ -9,5 +9,6 @@ module.exports = [
   {method: 'get',    path: '/regimes',              config: require('./config/workouts/query_regimes')},
   {method: 'post',   path: '/regimes',              config: require('./config/workouts/add_regime')},
   {method: 'get',    path: '/regimes/{rid}/phases', config: require('./config/workouts/query_phases')},
-  {method: 'post',   path: '/phases',               config: require('./config/workouts/add_phase')}
+  {method: 'post',   path: '/phases',               config: require('./config/workouts/add_phase')},
+  {method: 'get',    path: '/phases/{id}/workouts', config: require('./config/workouts/query_workouts')}
 ];

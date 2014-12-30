@@ -29,7 +29,7 @@
                   | Workouts &nbsp;
                   a.label.success.round(href='', ng-click='showModal(\'#workoutModal\')') +
                   | &nbsp;
-                p(ng-show='workouts.length') List of all workouts in phase
+                pre(ng-show='workouts.length') {{workouts | json}}
                 p(ng-show='!workouts.length') Add a workout!
 
 include modals/regime_modal
