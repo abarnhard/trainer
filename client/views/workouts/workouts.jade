@@ -68,26 +68,39 @@
             input(type='text', ng-model='newWorkout.name', placeholder='Name of the workout')
         fieldset
           legend
-            | Exercises &nbsp;
-            a.label.success.round(href='', ng-click='addExercise()') +
+            | Sets &nbsp;
+            a.label.success.round(href='', ng-click='addSet()') +
             | &nbsp;
-          table
+          table(ng-repeat='set in newWorkout.sets')
             thead
               tr
-                th Delete
-                th Sets
-                th Lifts
+                th(width='50') &nbsp;
+                th # Sets
+                th
+                  | Excercises &nbsp;
+                  a.label.success.round(href='', ng-click='addExcercise(set)') +
+                  | &nbsp;
                 th Reps
                 th Weight
                 th Rest
             tbody
-              tr(ng-repeat='e in newWorkout.exercises')
-                td Testdddddddddddddddddddddddddddddddddd
-                td Test
-                td Test
-                td Test
-                td Test
-                td Test
+              tr
+                td: a(ng-click='removeSet($index)'): img.delete(ng-src='/assets/img/delete.png')
+                td: input(type='number', ng-model='set.count')
+                td(colspan='3')
+                  table
+                    tbody
+                      tr(ng-repeat='excercise in set.excercises')
+                        td: input(type='text', ng-model='excercise.name')
+                        td Test
+                        td Test
+                td
+                  .row.collapse
+                    .small-9.columns
+                      input(type='number', ng-model='set.rest')
+                    .small-3.columns
+                      span.postfix secs
+                  
   a.close-reveal-modal x
 
 //-

@@ -6,7 +6,7 @@
       $scope.regimes    = [];
       $scope.phases     = [];
       $scope.workouts   = [];
-      $scope.newWorkout = {exercises:[]};
+      $scope.newWorkout = {sets:[]};
       $scope.regime     = null;
       $scope.phase      = null;
 
@@ -59,8 +59,16 @@
         });
       };
 
-      $scope.addExercise = function(){
-        $scope.newWorkout.exercises.push({});
+      $scope.addSet = function(){
+        $scope.newWorkout.sets.push({count:1, excercises:[{}], rest:0});
+      };
+
+      $scope.removeGroup = function(index){
+        console.log(index);
+      };
+
+      $scope.addExcercise = function(set){
+        set.excercises.push({});
       };
 
     }]);

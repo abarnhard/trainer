@@ -14,7 +14,7 @@ Workout.addRegime = function(obj, cb){
 
 Workout.getRegimes = function(userId, cb){
   pg.query('SELECT * FROM regimes WHERE user_id=$1', [userId], function(err, results){
-    console.log(results);
+    // console.log(results);
     cb(err, results.rows);
   });
 };
