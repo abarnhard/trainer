@@ -51,7 +51,7 @@
         Workout.createPhase(phaseName, $scope.regime.id).then(function(res){
           $('#phaseModal').foundation('reveal', 'close');
           $scope.newPhase = '';
-          queryPhases();
+          queryPhases($scope.regime.id);
         }, function(res){
           console.log('Something broke adding that phase', res);
           $('#phaseModal').foundation('reveal', 'close');
