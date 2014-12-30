@@ -16,3 +16,6 @@ psql $1 -f ../../db/tables/days.sql
 psql $1 -f ../../db/tables/types.sql
 psql $1 -f ../../db/tables/excercises.sql
 psql $1 -f ../../db/tables/excercises_sets.sql
+
+psql $1 -f ../../db/functions/add_phase.sql
+psql $1 -f ../../db/functions/query_phases.sql
