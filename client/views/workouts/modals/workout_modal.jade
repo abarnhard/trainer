@@ -1,0 +1,69 @@
+#workoutModal.reveal-modal(data-reveal='')
+  .row
+    .small-12.columns
+      h3 Add Workout
+  .row
+    .small-12.columns
+      form(name='newWorkoutForm')
+        .row.collapse.prefix-radius
+          .small-3.columns
+            span.prefix Name
+          .small-9.columns
+            input(type='text', ng-model='newWorkout.name', required, placeholder='Name of the workout')
+        .row
+          .small-12.columns
+            fieldset
+              legend
+                | Excercise Groups &nbsp;
+                a.label.success.round(href='', ng-click='addGroup()') +
+                | &nbsp;
+              .group-list
+                table(ng-repeat='group in newWorkout.groups')
+                  thead
+                    tr
+                      th(width='50') &nbsp;
+                      th(width='75') # Sets
+                      th
+                        | Excercises &nbsp;
+                        a.label.success.round(href='', ng-click='addExcercise(group)') +
+                        | &nbsp;
+                      th(width='150') Reps
+                      th(width='125') Weight
+                      th(width='125') Rest
+                  tbody
+                    tr
+                      td: a.label.alert.round(ng-click='removeGroup(newWorkout.groups, $index)') X
+                      td: input(type='number', min='1', required, ng-model='group.count')
+                      td(colspan='3')
+                        table
+                          tbody
+                            tr(ng-repeat='excercise in group.excercises')
+                              td(width='25'): a.label.alert.round(href='', ng-click='removeExcercise(group.excercises, $index)') X
+                              td: input(type='text', ng-model='excercise.name')
+                              td(width='150')
+                                .row.collapse
+                                  .small-6.columns
+                                    input(type='number', min='0', ng-model='excercise.reps.count', ng-disabled='excercise.reps.type === "3"')
+                                  .small-6.columns
+                                    select(ng-model='excercise.reps.type', ng-change='validateReps(excercise.reps)')
+                                      option(value='1') reps
+                                      option(value='2') secs
+                                      option(value='3') fail
+                              td(width='125')
+                                .row.collapse
+                                  .small-7.columns
+                                    input(type='number', min='0', ng-model='excercise.weight.lbs', ng-disabled='excercise.weight.type === "2"')
+                                  .small-5.columns
+                                    select(ng-model='excercise.weight.type', ng-change='validateWeight(excercise.weight)')
+                                      option(value='1') lbs
+                                      option(value='2') bw
+                      td
+                        .row.collapse
+                          .small-7.columns
+                            input(type='number', min='0', ng-model='set.rest')
+                          .small-5.columns
+                            span.postfix secs
+  .row
+    .small-12.columns
+      a.button.success(href='', ng-click='createWorkout(newWorkout)') Add
+  a.close-reveal-modal x

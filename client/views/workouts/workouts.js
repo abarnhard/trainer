@@ -6,7 +6,7 @@
       $scope.regimes    = [];
       $scope.phases     = [];
       $scope.workouts   = [];
-      $scope.newWorkout = {sets:[]};
+      $scope.newWorkout = {groups:[{count:1, excercises:[{reps: {type:'1'}, weight: {type:'1'}}], rest:0}]};
       $scope.regime     = null;
       $scope.phase      = null;
 
@@ -59,16 +59,40 @@
         });
       };
 
-      $scope.addSet = function(){
-        $scope.newWorkout.sets.push({count:1, excercises:[{}], rest:0});
+      $scope.createWorkout = function(workout){
+        console.log(workout);
       };
 
-      $scope.removeGroup = function(index){
-        console.log(index);
+      $scope.addGroup = function(){
+        var group = {count:1, excercises:[{reps: {type:'1'}, weight: {type:'1'}}], rest:0};
+        $scope.newWorkout.groups.push(group);
       };
 
-      $scope.addExcercise = function(set){
-        set.excercises.push({});
+      $scope.removeGroup = function(groups, index){
+        // console.log(groups, index);
+        groups.splice(index, 1);
+      };
+
+      $scope.addExcercise = function(group){
+        var excercise = {reps:{type:'1'}, weight:{type:'1'}};
+        group.excercises.push(excercise);
+      };
+
+      $scope.removeExcercise = function(excercises, index){
+        // console.log(excercises, index);
+        excercises.splice(index, 1);
+      };
+
+      $scope.validateReps = function(reps){
+        if(reps.type === '3'){
+          reps.count = 0;
+        }
+      };
+
+      $scope.validateWeight = function(weight){
+        if(weight.type === '2'){
+          weight.lbs = 0;
+        }
       };
 
     }]);
