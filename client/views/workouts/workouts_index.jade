@@ -5,7 +5,7 @@
         select(ng-model='regime', name='regime', ng-options='r as r.name for r in regimes | orderBy:\'name\'')
           option(value='') Select a Regime
       .small-1.columns
-        a.button.success.postfix(href='', ng-click='initRegime()') +
+        a.button.success.postfix(href='', ng-click='showModal(\'#regimeModal\')') +
       .small-1.columns
         | &nbsp;
       .small-4.columns
@@ -14,7 +14,7 @@
             option(value='') Select a Phase
       .small-1.columns
         div(ng-show='regime')
-          a.button.success.postfix(href='', ng-click='createPhase(phase)') +
+          a.button.success.postfix(href='', ng-click='showModal(\'#phaseModal\')') +
       .small-1.columns
         | &nbsp;
     .row
@@ -41,4 +41,15 @@
       input(type='text', ng-model='newRegime', placeholder='Name')
     .small-2.columns
       a.button.success.postfix(href='', ng-click='createRegime(newRegime)') Add
+  a.close-reveal-modal x
+
+#phaseModal.reveal-modal.small(data-reveal='')
+  .row
+    .small-12.columns
+      h3 Add Phase
+  .row.collapse.padded-row
+    .small-10.columns
+      input(type='text', ng-model='newPhase', placeholder='Name')
+    .small-2.columns
+      a.button.success.postfix(href='', ng-click='createPhase(newPhase)') Add
   a.close-reveal-modal x

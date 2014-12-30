@@ -19,4 +19,16 @@ Workout.getRegimes = function(userId, cb){
   });
 };
 
+Workout.addPhase = function(obj, cb){
+  pg.query('SELECT add_phase($1,$2,$3)', [obj.userId, obj.regimeId, obj.name], function(err, results){
+    cb(err);
+  });
+};
+
+Workout.getPhases = function(obj, cb){
+  pg.query('SELECT * FROM query_phases($1,$2)', [obj.userId, obj.regimeId], function(err, results){
+    cb(err, results.rows);
+  });
+};
+
 module.exports = Workout;

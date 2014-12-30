@@ -12,6 +12,14 @@
         return $http.get('/regimes');
       }
 
-      return {createRegime:createRegime, getRegimes:getRegimes};
+      function createPhase(phase, regimeId){
+        return $http.post('/phases', {name: phase, regimeId:regimeId});
+      }
+
+      function getPhases(regimeId){
+        return $http.get('/regimes/' + regimeId + '/phases');
+      }
+
+      return {createRegime:createRegime, getRegimes:getRegimes, createPhase:createPhase, getPhases:getPhases};
     }]);
 })();

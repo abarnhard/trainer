@@ -7,8 +7,8 @@ module.exports = {
   tags:['workouts'],
   handler: function(request, reply){
     Workout.getRegimes(request.auth.credentials.id, function(err, regimes){
-      if(err){console.log('ERROR: Workout.addRegime', err);}
-      reply(regimes).code(err ? 418 : 200);
+      if(err){console.log('ERROR: Workout.getRegimes', err);}
+      reply({regimes:regimes}).code(err ? 418 : 200);
     });
   }
 };
