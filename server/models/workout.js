@@ -31,6 +31,11 @@ Workout.getPhases = function(obj, cb){
   });
 };
 
+Workout.addWorkout = function(obj, cb){
+  console.log(obj);
+  cb(true);
+};
+
 Workout.getWorkouts = function(obj, cb){
   pg.query('SELECT * FROM query_workouts($1,$2)', [obj.userId, obj.phaseId], function(err, results){
     cb(err, results.rows);
