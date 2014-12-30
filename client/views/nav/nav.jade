@@ -14,6 +14,6 @@
         ul.right(ng-show='rootuser.username')
           li: a(ui-sref='home') Home
           li: a(ui-sref='schedule') Schedule
-          li: a(ui-sref='workouts.index') Workouts
+          li: a(ui-sref='workouts') Workouts
           li.divider
           li: a#avatarlink(ng-click='logout()'): img#avatarimg(ng-src='{{rootuser.avatar}}')

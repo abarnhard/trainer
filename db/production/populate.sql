@@ -24,23 +24,3 @@ INSERT INTO phases_regimes (phase_id,regime_id) VALUES (1,1);
 INSERT INTO phases_regimes (phase_id,regime_id) VALUES (2,1);
 INSERT INTO phases_regimes (phase_id,regime_id) VALUES (3,1);
 INSERT INTO phases_regimes (phase_id,regime_id) VALUES (4,1);
-
-/*
-INSERT INTO notes (title, body, user_id) values ('a1', 'b', 1);
-INSERT INTO notes (title, body, user_id) values ('a2', 'b', 1);
-INSERT INTO notes (title, body, user_id) values ('a3', 'b', 1);
-DELETE FROM notes;
-
-INSERT INTO notes (id,title, body, user_id) VALUES (1,'title1','body1',1);
-
-INSERT INTO tags (name) values ('a1');
-INSERT INTO tags (name) values ('a2');
-INSERT INTO tags (name) values ('a3');
-DELETE FROM tags;
-
-INSERT INTO tags (id,name) VALUES (1,'a');
-INSERT INTO tags (id,name) VALUES (2,'b');
-
-INSERT INTO notes_tags (note_id,tag_id) VALUES (1,1);
-INSERT INTO notes_tags (note_id,tag_id) VALUES (1,2);
-*/
