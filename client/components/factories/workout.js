@@ -20,6 +20,21 @@
         return $http.get('/regimes/' + regimeId + '/phases');
       }
 
-      return {createRegime:createRegime, getRegimes:getRegimes, createPhase:createPhase, getPhases:getPhases};
+      function createWorkout(workout, phaseId){
+        return $http.post('/workouts', {workout: workout, phaseId:phaseId});
+      }
+
+      function getWorkouts(phaseId){
+        return $http.get('/phases/' + phaseId + '/workouts');
+      }
+
+      return {
+        createRegime:createRegime,
+        getRegimes:getRegimes,
+        createPhase:createPhase,
+        getPhases:getPhases,
+        createWorkout:createWorkout,
+        getWorkouts:getWorkouts
+      };
     }]);
 })();

@@ -3,12 +3,32 @@
 
   angular.module('trainer')
     .controller('WorkoutsCtrl', ['$rootScope', '$scope', '$state', 'Workout', function($rootScope, $scope, $state, Workout){
-      $scope.regimes    = [];
-      $scope.phases     = [];
-      $scope.workouts   = [];
-      $scope.newWorkout = {groups:[{count:1, excercises:[{reps: {type:'1'}, weight: {type:'1'}}], rest:0}]};
-      $scope.regime     = null;
-      $scope.phase      = null;
+      $scope.regimes  = [];
+      $scope.phases   = [];
+      $scope.workouts = [];
+      $scope.regime   = null;
+      $scope.phase    = null;
+
+      function DefaultExcercise(){
+        this.reps   = {type:'1'};
+        this.weight = {type:'1'};
+      }
+
+      function DefaultWorkoutGroup(){
+        this.count = 1;
+        this.excercises = [];
+        this.excercises.push(new DefaultExcercise());
+        this.rest = 0;
+      }
+
+      function DefaultWorkout(){
+        this.groups = [];
+        this.groups.push(new DefaultWorkoutGroup());
+      }
+
+      function setDefaultNewWorkout(){
+        $scope.newWorkout = new DefaultWorkout();
+      }
 
       function queryRegimes(){
         Workout.getRegimes().then(function(res){
@@ -22,6 +42,13 @@
         });
       }
 
+      function queryWorkouts(phaseId){
+        Workout.getWorkouts(phaseId).then(function(res){
+          $scope.workouts = res.data.workouts;
+        });
+      }
+
+      setDefaultNewWorkout();
       queryRegimes();
 
       $scope.$watch('regime', function(selectedRegime, oldVal){
@@ -30,6 +57,15 @@
           queryPhases(selectedRegime.id);
         }else{
           $scope.phases = [];
+        }
+      });
+
+      $scope.$watch('phase', function(selectedPhase, oldVal){
+        // console.log(selectedPhase, oldVal);
+        if(selectedPhase){
+          queryWorkouts(selectedPhase.id);
+        }else{
+          $scope.workouts = [];
         }
       });
 
@@ -61,11 +97,17 @@
 
       $scope.createWorkout = function(workout){
         console.log(workout);
+        Workout.createWorkout(workout, $scope.phase.id).then(function(res){
+          setDefaultNewWorkout();
+          queryWorkouts($scope.phase.id);
+          $('#workoutModal').foundation('reveal', 'close');
+        }, function(res){
+          console.log('Something broke adding that workout', res);
+        });
       };
 
       $scope.addGroup = function(){
-        var group = {count:1, excercises:[{reps: {type:'1'}, weight: {type:'1'}}], rest:0};
-        $scope.newWorkout.groups.push(group);
+        $scope.newWorkout.groups.push(new DefaultWorkoutGroup());
       };
 
       $scope.removeGroup = function(groups, index){
@@ -74,8 +116,7 @@
       };
 
       $scope.addExcercise = function(group){
-        var excercise = {reps:{type:'1'}, weight:{type:'1'}};
-        group.excercises.push(excercise);
+        group.excercises.push(new DefaultExcercise());
       };
 
       $scope.removeExcercise = function(excercises, index){
@@ -84,15 +125,11 @@
       };
 
       $scope.validateReps = function(reps){
-        if(reps.type === '3'){
-          reps.count = 0;
-        }
+        if(reps.type === '3'){reps.count = 0;}
       };
 
       $scope.validateWeight = function(weight){
-        if(weight.type === '2'){
-          weight.lbs = 0;
-        }
+        if(weight.type === '2'){weight.lbs = 0;}
       };
 
     }]);
