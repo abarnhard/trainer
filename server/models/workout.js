@@ -48,10 +48,10 @@ Workout.addWorkout = function(obj, cb){
 
         var setId = results.rows[0].add_set;
         console.log('add_set', err, setId); // log
-        async.each(set.excercises, function(excercise, done){
-          console.log('excercise:', excercise); // log
-          excercise.reps.type = parseInt(excercise.reps.type, 10);
-          pg.query('SELECT add_excercise($1,$2,$3,$4,$5)', [setId, excercise.reps.type, excercise.reps.count, excercise.weight.lbs, excercise.name], function(err, results){
+        async.each(set.exercises, function(exercise, done){
+          console.log('exercise:', exercise); // log
+          exercise.reps.type = parseInt(exercise.reps.type, 10);
+          pg.query('SELECT add_exercise($1,$2,$3,$4,$5)', [setId, exercise.reps.type, exercise.reps.count, exercise.weight.lbs, exercise.name], function(err, results){
             done(err);
           });
         }, function(err){

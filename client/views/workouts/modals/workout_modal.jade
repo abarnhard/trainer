@@ -14,7 +14,7 @@
           .small-12.columns
             fieldset
               legend
-                | Excercise Groups &nbsp;
+                | Exercise Groups &nbsp;
                 a.label.success.round(href='', ng-click='addGroup()') +
                 | &nbsp;
               .group-list
@@ -24,8 +24,8 @@
                       th(width='50') &nbsp;
                       th(width='75') # Sets
                       th
-                        | Excercises &nbsp;
-                        a.label.success.round(href='', ng-click='addExcercise(group)') +
+                        | Exercises &nbsp;
+                        a.label.success.round(href='', ng-click='addExercise(group)') +
                         | &nbsp;
                       th(width='150') Reps
                       th(width='125') Weight
@@ -37,24 +37,24 @@
                       td(colspan='3')
                         table
                           tbody
-                            tr(ng-repeat='excercise in group.excercises')
-                              td(width='25'): a.label.alert.round(href='', ng-show='group.excercises.length > 1', ng-click='removeExcercise(group.excercises, $index)') X
-                              td: input(type='text', ng-model='excercise.name')
+                            tr(ng-repeat='exercise in group.exercises')
+                              td(width='25'): a.label.alert.round(href='', ng-show='group.exercises.length > 1', ng-click='removeExercise(group.exercises, $index)') X
+                              td: input(type='text', ng-model='exercise.name')
                               td(width='150')
                                 .row.collapse
                                   .small-6.columns
-                                    input(type='number', min='0', ng-model='excercise.reps.count', ng-disabled='excercise.reps.type === "3"')
+                                    input(type='number', min='0', ng-model='exercise.reps.count', ng-disabled='exercise.reps.type === "3"')
                                   .small-6.columns
-                                    select(ng-model='excercise.reps.type', ng-change='validateReps(excercise.reps)')
+                                    select(ng-model='exercise.reps.type', ng-change='validateReps(exercise.reps)')
                                       option(value='1') reps
                                       option(value='2') secs
                                       option(value='3') fail
                               td(width='125')
                                 .row.collapse
                                   .small-7.columns
-                                    input(type='number', min='0', ng-model='excercise.weight.lbs', ng-disabled='excercise.weight.type === "2"')
+                                    input(type='number', min='0', ng-model='exercise.weight.lbs', ng-disabled='exercise.weight.type === "2"')
                                   .small-5.columns
-                                    select(ng-model='excercise.weight.type', ng-change='validateWeight(excercise.weight)')
+                                    select(ng-model='exercise.weight.type', ng-change='validateWeight(exercise.weight)')
                                       option(value='1') lbs
                                       option(value='2') bw
                       td

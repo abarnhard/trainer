@@ -1,4 +1,4 @@
-CREATE TABLE excercises(
+CREATE TABLE exercises(
   id serial PRIMARY KEY,
   name varchar(255) NOT NULL,
   reps integer NOT NULL,

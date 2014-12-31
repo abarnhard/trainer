@@ -1,5 +1,5 @@
-DROP TABLE excercises_sets;
-DROP TABLE excercises;
+DROP TABLE exercises_sets;
+DROP TABLE exercises;
 DROP TABLE types;
 DROP TABLE days;
 DROP TABLE sets_workouts;

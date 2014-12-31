@@ -1,5 +1,5 @@
-DELETE FROM excercises_sets;
-DELETE FROM excercises;
+DELETE FROM exercises_sets;
+DELETE FROM exercises;
 DELETE FROM types;
 DELETE FROM days;
 DELETE FROM sets_workouts;

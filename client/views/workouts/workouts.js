@@ -9,15 +9,15 @@
       $scope.regime   = null;
       $scope.phase    = null;
 
-      function DefaultExcercise(){
+      function DefaultExercise(){
         this.reps   = {type:'1'};
         this.weight = {type:'1'};
       }
 
       function DefaultWorkoutGroup(){
         this.count = 1;
-        this.excercises = [];
-        this.excercises.push(new DefaultExcercise());
+        this.exercises = [];
+        this.exercises.push(new DefaultExercise());
         this.rest = 0;
       }
 
@@ -115,13 +115,13 @@
         groups.splice(index, 1);
       };
 
-      $scope.addExcercise = function(group){
-        group.excercises.push(new DefaultExcercise());
+      $scope.addExercise = function(group){
+        group.exercises.push(new DefaultExercise());
       };
 
-      $scope.removeExcercise = function(excercises, index){
-        // console.log(excercises, index);
-        excercises.splice(index, 1);
+      $scope.removeExercise = function(exercises, index){
+        // console.log(exercises, index);
+        exercises.splice(index, 1);
       };
 
       $scope.validateReps = function(reps){
