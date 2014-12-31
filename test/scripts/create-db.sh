@@ -10,6 +10,7 @@ psql $1 -f ../../db/tables/regimes.sql
 psql $1 -f ../../db/tables/phases.sql
 psql $1 -f ../../db/tables/phases_regimes.sql
 psql $1 -f ../../db/tables/workouts.sql
+psql $1 -f ../../db/tables/phases_workouts.sql
 psql $1 -f ../../db/tables/sets.sql
 psql $1 -f ../../db/tables/sets_workouts.sql
 psql $1 -f ../../db/tables/days.sql
@@ -17,5 +18,8 @@ psql $1 -f ../../db/tables/types.sql
 psql $1 -f ../../db/tables/excercises.sql
 psql $1 -f ../../db/tables/excercises_sets.sql
 
+psql $1 -f ../../db/functions/add_excercise.sql
 psql $1 -f ../../db/functions/add_phase.sql
+psql $1 -f ../../db/functions/add_set.sql
+psql $1 -f ../../db/functions/add_workout.sql
 psql $1 -f ../../db/functions/query_phases.sql

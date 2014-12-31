@@ -1,3 +1,12 @@
+-- add workout types
+INSERT INTO types ("type") VALUES ('secs');
+INSERT INTO types ("type") VALUES ('reps');
+INSERT INTO types ("type") VALUES ('fail');
+DELETE FROM types;
+INSERT INTO types (id,"type") VALUES (1,'secs');
+INSERT INTO types (id,"type") VALUES (2,'reps');
+INSERT INTO types (id,"type") VALUES (3,'fail');
+
 -- add user
 INSERT INTO users (username,email,password,avatar,token) VALUES ('a1','b1','c','d','e');
 DELETE FROM users;
