@@ -59,7 +59,7 @@ Workout.addWorkout = function(obj, cb){
         });
       });
     }, function(err){
-      cb(true);
+      cb(err);
     });
 
   });
