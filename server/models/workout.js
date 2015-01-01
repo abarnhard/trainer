@@ -90,6 +90,14 @@ Workout.getWorkouts = function(obj, cb){
   });
 };
 
+Workout.deleteWorkout = function(obj, cb){
+  console.log(obj);
+  pg.query('SELECT delete_workout($1,$2)', [obj.userId, obj.workoutId], function(err, results){
+    var id = (results.rows[0] || {}).delete_workout;
+    cb(err, id);
+  });
+};
+
 module.exports = Workout;
 
 // HELPER FUNCTIONS //

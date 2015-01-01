@@ -11,5 +11,6 @@ module.exports = [
   {method: 'get',    path: '/regimes/{rid}/phases', config: require('./config/workouts/query_phases')},
   {method: 'post',   path: '/phases',               config: require('./config/workouts/add_phase')},
   {method: 'get',    path: '/phases/{id}/workouts', config: require('./config/workouts/query_workouts')},
-  {method: 'post',   path: '/workouts',             config: require('./config/workouts/add_workout')}
+  {method: 'post',   path: '/workouts',             config: require('./config/workouts/add_workout')},
+  {method: 'delete', path: '/workouts/{id}',        config: require('./config/workouts/delete_workout')}
 ];
