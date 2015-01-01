@@ -29,6 +29,10 @@
                   | Workouts &nbsp;
                   a.label.success.round(href='', ng-click='showModal(\'#workoutModal\')') +
                   | &nbsp;
+                .row(ng-show='workouts.length')
+                  .columns.small-12
+                    ul.pricing-table(ng-repeat='workout in workouts')
+                      li.title {{workout.workoutName}}
                 pre(ng-show='workouts.length') {{workouts | json}}
                 p(ng-show='!workouts.length') Add a workout!
 
