@@ -24,6 +24,10 @@
         return $http.post('/workouts', {workout: workout, phaseId:phaseId});
       }
 
+      function deleteWorkout(id){
+        return $http.delete('/workouts/' + id);
+      }
+
       function getWorkouts(phaseId){
         return $http.get('/phases/' + phaseId + '/workouts');
       }
@@ -34,6 +38,7 @@
         createPhase:createPhase,
         getPhases:getPhases,
         createWorkout:createWorkout,
+        deleteWorkout:deleteWorkout,
         getWorkouts:getWorkouts
       };
     }]);

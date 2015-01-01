@@ -30,3 +30,30 @@ img.delete {
   max-height: 350px;
   overflow-y: scroll;
 }
+
+.pricing-table li.title {
+  position: relative;
+}
+
+li.title > a.label {
+  position: absolute;
+  right: 10px;
+}
+
+.pricing-table li.bullet-item {
+  padding: 0;
+}
+
+li.bullet-item > table,  li.bullet-item > table td > table {
+  margin: 0;
+  width: 100%;
+  border: hidden;
+}
+
+li.bullet-item > table tr td:nth-child(2) {
+  padding: 0;
+}
+
+li.bullet-item > table td > table {
+  background-color: inherit;
+}

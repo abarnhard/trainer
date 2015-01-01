@@ -7,7 +7,10 @@ module.exports = function(grunt){
     watch: {
       code: {
         files: ['Gruntfile.js', 'client/**/*', 'server/**/*', 'test/**/*'],
-        tasks: ['build']
+        tasks: ['build'],
+        options: {
+          livereload: false
+        }
       }
     },
     // ---------------------------------------------------------------------- //
