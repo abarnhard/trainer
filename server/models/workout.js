@@ -67,9 +67,43 @@ Workout.addWorkout = function(obj, cb){
 
 Workout.getWorkouts = function(obj, cb){
   pg.query('SELECT * FROM query_workouts($1,$2)', [obj.userId, obj.phaseId], function(err, results){
-    // cb(err, results.rows);
-    cb(err);
+    if(err){return cb(err, null);}
+    // console.log(err, results.rows);
+    async.mapSeries(results.rows, function(wk, finished){
+      console.log(wk);
+      async.map(wk.setIds, function(setId, done){
+        pg.query('SELECT * FROM query_set($1)', [setId], function(err, results){
+          if(err){return done(err, null);}
+          var rawSet = results.rows[0],
+              set    = {setId:rawSet.setId, rest:rawSet.rest, count:rawSet.count};
+          set.exercises = rebuildExercises(rawSet);
+          done(err, set);
+        });
+      }, function(err, sets){
+        delete wk.setIds;
+        wk.sets = sets;
+        finished(null, wk);
+      });
+    }, function(err, workouts){
+      cb(err, workouts);
+    });
   });
 };
 
 module.exports = Workout;
+
+// HELPER FUNCTIONS //
+function rebuildExercises(obj){
+  var exercises = obj.exerciseIds.map(function(id, i){
+    var exercise = {
+      id: id,
+      name: obj.exerciseNames[i],
+      reps: obj.reps[i],
+      weight: obj.weights[i],
+      typeId: obj.typeIds[i],
+      type: obj.types[i]
+    };
+    return exercise;
+  });
+  return exercises;
+}
