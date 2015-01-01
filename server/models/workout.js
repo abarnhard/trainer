@@ -35,21 +35,21 @@ Workout.getPhases = function(obj, cb){
 };
 
 Workout.addWorkout = function(obj, cb){
-  console.log('addWorkout input:', obj); // log
+  // console.log('addWorkout input:', obj); // log
   pg.query('SELECT add_workout($1,$2)', [obj.workout.name, obj.phaseId], function(err, results){
     var workoutId = results.rows[0].add_workout;
-    console.log('add_workout', err, workoutId); // log
+    // console.log('add_workout', err, workoutId); // log
 
     async.eachSeries(obj.workout.groups, function(set, finished){
-      console.log('set', set); // log
+      // console.log('set', set); // log
 
       pg.query('SELECT add_set($1,$2,$3)',[workoutId, set.count, set.rest],function(err, results){
         if(err){return finished(err);}
 
         var setId = results.rows[0].add_set;
-        console.log('add_set', err, setId); // log
+        // console.log('add_set', err, setId); // log
         async.each(set.exercises, function(exercise, done){
-          console.log('exercise:', exercise); // log
+          // console.log('exercise:', exercise); // log
           exercise.reps.type = parseInt(exercise.reps.type, 10);
           pg.query('SELECT add_exercise($1,$2,$3,$4,$5)', [setId, exercise.reps.type, exercise.reps.count, exercise.weight.lbs, exercise.name], function(err, results){
             done(err);
@@ -70,7 +70,7 @@ Workout.getWorkouts = function(obj, cb){
     if(err){return cb(err, null);}
     // console.log(err, results.rows);
     async.mapSeries(results.rows, function(wk, finished){
-      console.log(wk);
+      // console.log(wk);
       async.map(wk.setIds, function(setId, done){
         pg.query('SELECT * FROM query_set($1)', [setId], function(err, results){
           if(err){return done(err, null);}

@@ -96,7 +96,7 @@
       };
 
       $scope.createWorkout = function(workout){
-        console.log(workout);
+        // console.log(workout);
         Workout.createWorkout(workout, $scope.phase.id).then(function(res){
           setDefaultNewWorkout();
           queryWorkouts($scope.phase.id);
