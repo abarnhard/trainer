@@ -107,9 +107,12 @@
       };
 
       $scope.deleteWorkout = function(wk, index){
-        // $scope.workouts.splice(index, 1);
-        console.log(wk);
+        $scope.workouts.splice(index, 1);
+        // console.log(wk);
         Workout.deleteWorkout(wk.workoutId).then(function(res){
+          queryWorkouts($scope.phase.id);
+        }, function(res){
+          console.log('Something broke adding that workout', res);
           queryWorkouts($scope.phase.id);
         });
       };
