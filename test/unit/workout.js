@@ -5,7 +5,7 @@
 var expect     = require('chai').expect,
     cp         = require('child_process'),
     h          = require('../helpers/helpers'),
-    User       = require('../../server/models/user'),
+    Workout    = require('../../server/models/workout'),
     Lab        = require('lab'),
     lab        = exports.lab = Lab.script(),
     describe   = lab.describe,
@@ -13,58 +13,83 @@ var expect     = require('chai').expect,
     beforeEach = lab.beforeEach,
     db         = h.getdb();
 
-describe('User', function(){
+describe('Workout', function(){
   beforeEach(function(done){
     cp.execFile(__dirname + '/../scripts/clean-db.sh', [db], {cwd:__dirname + '/../scripts'}, function(err, stdout, stderr){
+      if(err){console.log(err, stdout, stderr);}
       done();
     });
   });
 
   describe('constructor', function(){
-    it('should create a User object', function(done){
-      var user = new User({username:'bob', email:'bob@aol.com', password: '1234'});
-
-      expect(user).to.be.instanceof(User);
-      expect(user.username).to.equal('bob');
+    it('should create a Workout object', function(done){
+      var wk = new Workout();
+      expect(wk).to.be.instanceof(Workout);
       done();
     });
   });
 
-  describe('.register', function(){
-    it('should register a new User', function(done){
-      User.register({username:'sam', email:'sam@aol.com', password:'1234'}, function(err, user){
-        expect(err).to.be.null;
-        expect(user.username).to.equal('sam');
+  describe('.addRegime', function(){
+    it('should create a new regime', function(done){
+      var input = {name:'Regime Unit Test', userId:1};
+      Workout.addRegime(input, function(err){
+        expect(err).to.not.be.ok;
         done();
       });
     });
-    it('should NOT register a new User - duplicate', function(done){
-      User.register({username:'bob', email: 'bob@aol.com', password:'1234'}, function(err, user){
+    it('should NOT create a new regime (duplicate name)', function(done){
+      var input = {name:'Test Regime 1 - Bob', userId:1};
+      Workout.addRegime(input, function(err){
         expect(err).to.be.ok;
-        expect(user).to.not.be.ok;
         done();
       });
     });
   });
 
-  describe('.login', function(){
-    it('should login a User', function(done){
-      User.login({email:'bob@aol.com', password:'1234'}, function(err, user){
-        expect(user.username).to.equal('bob');
-        done();
-      });
-    });
-    it('should NOT login a User - bad username', function(done){
-      User.login({email:'wrong@wrong.com', password:'1234'}, function(err, user){
-        expect(user).to.be.null;
-        done();
-      });
-    });
-    it('should NOT login a User - bad password', function(done){
-      User.login({email:'bob@aol.com', password:'wrong'}, function(err, user){
-        expect(user).to.be.null;
+  describe('.getRegimes', function(){
+    it('should return all regimes for a user', function(done){
+      var userId = 1;
+      Workout.getRegimes(userId, function(err, regimes){
+        expect(regimes).to.have.length(1);
+        expect(regimes[0].name).to.equal('Test Regime 1 - Bob');
         done();
       });
     });
   });
+
+  describe('.addPhase', function(){
+    it('should add a new phase to regime', function(done){
+      var input = {userId:1,regimeId:1,name:'phase unit test'};
+      Workout.addPhase(input, function(err){
+        expect(err).to.not.be.ok;
+        done();
+      });
+    });
+    it('should NOT add a new phase to regime (duplicate name)', function(done){
+      var input = {userId:1,regimeId:1,name:'Test Phase 1'};
+      Workout.addPhase(input, function(err){
+        expect(err).to.be.ok;
+        done();
+      });
+    });
+  });
+
+  describe('.getPhases', function(){
+    it('should return all phases in regime', function(done){
+      var input = {userId:1,regimeId:1};
+      Workout.getPhases(input, function(err, phases){
+        expect(phases).to.have.length(3);
+        expect(phases[0].name).to.equal('Test Phase 1');
+        done();
+      });
+    });
+  });
+
 });
+/*
+  describe('', function(){
+    it('should ', function(done){
+
+    });
+  });
+*/
