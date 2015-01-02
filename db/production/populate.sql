@@ -423,4 +423,49 @@ INSERT INTO sets_workouts (set_id,workout_id) VALUES (95,20);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (96,20);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (97,21);
 
+-- add exercises
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,1,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,2,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,3,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,4,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,5,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,6,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,7,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,8,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,9,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,10,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,11,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,12,1,'a');
+DELETE FROM exercises;
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (1, 1,20,0,'Warm up with: Push Ups');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (2, 1,12,45,'Flat Bench press');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (3, 1,12,45,'Bent over Barbell Row');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (4, 1,12,45,'Seated Military Press');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (5, 1,15,45,'Standing Barbell Shrugs');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (6, 1,12,45,'Standing Barbell Curls');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (7, 3,0,0,'Seated Body Weight Dips');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (8, 1,15,45,'Barbell Squat');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (9, 1,15,45,'Stiff Dead Lifts');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (10,1,20,0,'Standing Calf Raises');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (11,2,90,25,'Running In Place (Weighted)');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (12,2,15,0,'Decline Sit-Ups');
+
+
+-- add exercise set join
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (1, 1);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (2, 2);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (3, 2);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (4, 3);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (5, 3);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (6, 4);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (7, 4);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (8, 5);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (9, 5);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (10,6);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (11,6);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (12,7);
+
+
+
+
 
