@@ -1,10 +1,5 @@
-.row(ng-show='!rootuser')
+.row
   .small-12.columns
     h3 Working out is hard enough, let ngTrainer take the pain out of managing your HIIT workouts.
-    h5 Sign up, build your workout, set your schedule, and download the mobile companion app to make your trips to the gym a breeze.
+    h5(ng-show='!rootuser') Sign up, build your workout, set your schedule, and download the mobile companion app to make your trips to the gym a breeze.
     //- img(src='/assets/img/motivation.jpg')
-    
-.row(ng-show='rootuser')
-  .small-12.columns
-    h5 Lift like you mean it
-    h3 Logged In, spot for dashboard stats showing days workouts completed vs scheduled
