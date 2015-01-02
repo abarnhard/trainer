@@ -212,7 +212,7 @@ INSERT INTO sets (id,rest,count) VALUES (3,90,2);
 INSERT INTO sets (id,rest,count) VALUES (4,90,2);
 INSERT INTO sets (id,rest,count) VALUES (5,90,2);
 INSERT INTO sets (id,rest,count) VALUES (6,90,1);
-INSERT INTO sets (id,rest,count) VALUES (7,15,4);
+INSERT INTO sets (id,rest,count) VALUES (7,15,4);/*
 -- phase 1 / day 2 (workout 2)
 INSERT INTO sets (id,rest,count) VALUES (8, 0, 1);
 INSERT INTO sets (id,rest,count) VALUES (9, 90,2);
@@ -323,7 +323,7 @@ INSERT INTO sets (id,rest,count) VALUES (95,20,5);
 INSERT INTO sets (id,rest,count) VALUES (96,20,6);
 -- phase 4 / day 10 (workout 21)
 INSERT INTO sets (id,rest,count) VALUES (97,60,5);
-
+*/
 -- add sets workouts join
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (1, 1);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (2, 1);
@@ -331,7 +331,7 @@ INSERT INTO sets_workouts (set_id,workout_id) VALUES (3, 1);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (4, 1);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (5, 1);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (6, 1);
-INSERT INTO sets_workouts (set_id,workout_id) VALUES (7, 1);
+INSERT INTO sets_workouts (set_id,workout_id) VALUES (7, 1);/*
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (8, 2);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (9, 2);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (10,2);
@@ -422,7 +422,7 @@ INSERT INTO sets_workouts (set_id,workout_id) VALUES (94,20);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (95,20);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (96,20);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (97,21);
-
+*/
 -- add exercises
 INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,1,1,'a');
 INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,2,1,'a');
@@ -436,6 +436,18 @@ INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,9,1,'a');
 INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,10,1,'a');
 INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,11,1,'a');
 INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,12,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,13,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,14,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,15,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,16,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,17,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,18,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,19,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,20,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,21,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,22,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,23,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,24,1,'a');
 DELETE FROM exercises;
 INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (1, 1,20,0,'Warm up with: Push Ups');
 INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (2, 1,12,45,'Flat Bench press');

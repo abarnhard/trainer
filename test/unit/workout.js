@@ -124,7 +124,7 @@ describe('Workout', function(){
       var input = {userId: 1, phaseId: 1};
       Workout.getWorkouts(input, function(err, workouts){
         expect(workouts).to.have.length(2);
-       
+
         var wk = workouts[0];
         // console.log(workouts);
         expect(wk.workoutName).to.equal('Test Workout 1');
