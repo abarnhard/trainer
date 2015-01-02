@@ -17,6 +17,13 @@
     "foundation": "~5.5.0",
     "ng-file-upload": "~2.0.5",
     "moment": "~2.8.4",
-    "fullcalendar": "~2.2.5"
+    "fullcalendar": "~2.2.5",
+    "angular-ui-calendar": "0.9.0-beta.1"
+  },
+  "resolutions": {
+    "angular": "~1.3.7",
+    "jquery": "~2.1.1",
+    "fullcalendar": "~2.2.5",
+    "angular-ui-calendar": "0.9.0-beta.1"
   }
 }
