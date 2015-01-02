@@ -1,10 +1,10 @@
 -- add workout types
-INSERT INTO types ("type") VALUES ('secs');
-INSERT INTO types ("type") VALUES ('reps');
-INSERT INTO types ("type") VALUES ('fail');
+INSERT INTO types ("type") VALUES ('a1');
+INSERT INTO types ("type") VALUES ('b1');
+INSERT INTO types ("type") VALUES ('c1');
 DELETE FROM types;
-INSERT INTO types (id,"type") VALUES (1,'secs');
-INSERT INTO types (id,"type") VALUES (2,'reps');
+INSERT INTO types (id,"type") VALUES (1,'reps');
+INSERT INTO types (id,"type") VALUES (2,'secs');
 INSERT INTO types (id,"type") VALUES (3,'fail');
 
 -- add user
