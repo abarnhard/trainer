@@ -59,7 +59,8 @@ Workout.addWorkout = function(obj, cb){
         });
       });
     }, function(err){
-      cb(err);
+      workoutId = err ? null : workoutId;
+      cb(err, workoutId);
     });
 
   });
@@ -91,9 +92,9 @@ Workout.getWorkouts = function(obj, cb){
 };
 
 Workout.deleteWorkout = function(obj, cb){
-  console.log(obj);
+  // console.log(obj);
   pg.query('SELECT delete_workout($1,$2)', [obj.userId, obj.workoutId], function(err, results){
-    var id = (results.rows[0] || {}).delete_workout;
+    var id = (results || {rows:[{}]}).rows[0].delete_workout;
     cb(err, id);
   });
 };

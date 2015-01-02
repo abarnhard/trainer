@@ -85,6 +85,71 @@ describe('Workout', function(){
     });
   });
 
+  describe('.addWorkout', function(){
+    it('should add a new workout to a phase', function(done){
+      var input = {
+        phaseId: 1,
+        workout: {
+          name:'Workout Unit Test',
+          groups: [
+            {
+              count: 1,
+              rest: 90,
+              exercises: [{
+                reps: {
+                  count: 15,
+                  type: '1'
+                },
+                weight: {
+                  lbs: 0,
+                  type: '2'
+                },
+                name: 'Unit Test Exercise'
+              }]
+            }
+          ]
+        }
+      };
+
+      Workout.addWorkout(input, function(err, workoutId){
+        expect(err).to.not.be.ok;
+        expect(workoutId).to.be.above(1);
+        done();
+      });
+    });
+  });
+
+  describe('.getWorkouts', function(){
+    it('should return all workouts in a phase', function(done){
+      var input = {userId: 1, phaseId: 1};
+      Workout.getWorkouts(input, function(err, workouts){
+        expect(workouts).to.have.length(2);
+       
+        var wk = workouts[0];
+        // console.log(workouts);
+        expect(wk.workoutName).to.equal('Test Workout 1');
+        expect(wk.sets).to.have.length(2);
+
+        var set = wk.sets[0];
+        expect(set.rest).to.equal(0);
+        expect(set.exercises).to.have.length(2);
+        done();
+      });
+    });
+  });
+
+  describe('.deleteWorkout', function(){
+    it('should delete a workout', function(done){
+      var workoutId = 1,
+          input = {userId: 1, workoutId: workoutId};
+      Workout.deleteWorkout(input, function(err, id){
+        expect(err).to.not.be.ok;
+        expect(id).to.equal(workoutId);
+        done();
+      });
+    });
+  });
+
 });
 /*
   describe('', function(){
