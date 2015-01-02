@@ -15,7 +15,7 @@ INSERT INTO users (id,username,email,password,avatar,token) VALUES (1,'bob','bob
 -- add regime
 INSERT INTO regimes (name,user_id) VALUES ('a',1);
 DELETE FROM regimes;
-INSERT INTO regimes (id,name,user_id) VALUES (1,'Sixpack Shortcuts',1);
+INSERT INTO regimes (id,name,user_id) VALUES (1,'HIIT It',1);
 
 -- add phases
 INSERT INTO phases (name) VALUES ('a1');
@@ -212,19 +212,19 @@ INSERT INTO sets (id,rest,count) VALUES (3,90,2);
 INSERT INTO sets (id,rest,count) VALUES (4,90,2);
 INSERT INTO sets (id,rest,count) VALUES (5,90,2);
 INSERT INTO sets (id,rest,count) VALUES (6,90,1);
-INSERT INTO sets (id,rest,count) VALUES (7,15,4);/*
+INSERT INTO sets (id,rest,count) VALUES (7,15,4);
 -- phase 1 / day 2 (workout 2)
 INSERT INTO sets (id,rest,count) VALUES (8, 0, 1);
 INSERT INTO sets (id,rest,count) VALUES (9, 90,2);
 INSERT INTO sets (id,rest,count) VALUES (10,90,2);
 INSERT INTO sets (id,rest,count) VALUES (11,90,2);
 INSERT INTO sets (id,rest,count) VALUES (12,90,2);
-INSERT INTO sets (id,rest,count) VALUES (13,90,1);
+INSERT INTO sets (id,rest,count) VALUES (13,30,3);
 INSERT INTO sets (id,rest,count) VALUES (14,90,4);
 -- phase 1 / day 3 (workout 3)
 INSERT INTO sets (id,rest,count) VALUES (15,90,10);
 -- phase 1 / day 4 (workout 4)
-INSERT INTO sets (id,rest,count) VALUES (16,90,10);
+INSERT INTO sets (id,rest,count) VALUES (16,90,10);/*
 -- phase 2 / day 1 (workout 5)
 INSERT INTO sets (id,rest,count) VALUES (17, 0,1);
 INSERT INTO sets (id,rest,count) VALUES (18,90,4);
@@ -331,7 +331,7 @@ INSERT INTO sets_workouts (set_id,workout_id) VALUES (3, 1);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (4, 1);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (5, 1);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (6, 1);
-INSERT INTO sets_workouts (set_id,workout_id) VALUES (7, 1);/*
+INSERT INTO sets_workouts (set_id,workout_id) VALUES (7, 1);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (8, 2);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (9, 2);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (10,2);
@@ -340,7 +340,7 @@ INSERT INTO sets_workouts (set_id,workout_id) VALUES (12,2);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (13,2);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (14,2);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (15,3);
-INSERT INTO sets_workouts (set_id,workout_id) VALUES (16,4);
+INSERT INTO sets_workouts (set_id,workout_id) VALUES (16,4);/*
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (17,5);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (18,5);
 INSERT INTO sets_workouts (set_id,workout_id) VALUES (19,5);
@@ -448,7 +448,16 @@ INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,21,1,'a');
 INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,22,1,'a');
 INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,23,1,'a');
 INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,24,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,25,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,26,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,27,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,28,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,29,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,30,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,31,1,'a');
+INSERT INTO exercises (type_id,reps,weight,name) VALUES (1,32,1,'a');
 DELETE FROM exercises;
+-- phase 1 / day 1 (workout 1, Sets 1 - 7)
 INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (1, 1,20,0,'Warm up with: Push Ups');
 INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (2, 1,12,45,'Flat Bench press');
 INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (3, 1,12,45,'Bent over Barbell Row');
@@ -460,10 +469,33 @@ INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (8, 1,15,45,'Barbell 
 INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (9, 1,15,45,'Stiff Dead Lifts');
 INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (10,1,20,0,'Standing Calf Raises');
 INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (11,2,90,25,'Running In Place (Weighted)');
-INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (12,2,15,0,'Decline Sit-Ups');
-
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (12,2,15,0,'');
+-- phase 1 / day 2 (workout 2, Sets 8 - 14)
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (13,2,20,0,'Warm up with: Jumping Jacks');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (14,1,12,25,'Incline Dumbbell Chest Press');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (15,1,12,0,'Wide Chin Ups');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (16,1,12,25,'Standing Dumbbell Shoulder Press');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (17,1,15,25,'Standing Dumbbell Shrugs');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (18,1,12,25,'Seated Dumbbell Curls (Both arms)');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (19,1,12,25,'Seated dumbbell overhead ext');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (20,1,20,25,'Dumbbell Walking Lunges');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (21,1,12,25,'Dumbbell Stiff Leg Dead Lift');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (22,1,30,0,'3-Position Calf Raises (One position per set)');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (23,1,20,0,'Bicycle Crunch');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (24,2,30,0,'Mountain Climbers');
+-- phase 1 / day 3 (workout 3, Set 15)
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (25,2,20,0,'Body Weight Squats');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (26,2,20,0,'Dynamic Push-Ups');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (27,2,20,0,'Prone Cobras');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (28,2,20,0,'Jumping Jacks');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (29,2,20,0,'Mountain Climbers');
+-- phase 1 / day 4 (workout 4, Set 16)
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (30,2,20,0,'High Knees');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (31,2,20,0,'Half Burpees');
+INSERT INTO exercises (id,type_id,reps,weight,name) VALUES (32,2,20,0,'Reverse Crunch');
 
 -- add exercise set join
+-- phase 1 / day 1 (workout 1, Sets 1 - 7)
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (1, 1);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (2, 2);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (3, 2);
@@ -476,8 +508,26 @@ INSERT INTO exercises_sets (exercise_id,set_id) VALUES (9, 5);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (10,6);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (11,6);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (12,7);
-
-
-
-
-
+-- phase 1 / day 2 (workout 2, Sets 8 - 14)
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (13,8);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (14,9);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (15,9);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (16,10);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (17,10);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (18,11);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (19,11);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (20,12);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (21,12);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (22,13);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (23,14);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (24,14);
+-- phase 1 / day 3 (workout 3, Set 15)
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (25,15);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (26,15);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (27,15);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (28,15);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (29,15);
+-- phase 1 / day 4 (workout 4, Set 16)
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (30,16);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (31,16);
+INSERT INTO exercises_sets (exercise_id,set_id) VALUES (32,16);
