@@ -17,6 +17,7 @@
     $scope.workouts        = [];
     $scope.regime          = null;
     $scope.phase           = null;
+    $scope.selectedLiftDay = null;
     $scope.selectedWorkout = null;
 
     // define querys for workouts modals
@@ -60,16 +61,18 @@
     }
 
     function editEvent(obj){
-      var index = findEventIndex(obj.start, $scope.workouts);
-      $scope.$apply(function(){$scope.selectedWorkout = $scope.liftDays[index];});
+      // input is either a moment object or an event object with a moment date in .start
+      var index = findEventIndex((obj.start || obj), $scope.liftDays);
+      $scope.$apply(function(){$scope.selectedLiftDay = $scope.liftDays[index];});
       showModal('#editModal');
     }
 
     $scope.clickHandler = function(obj){
+      // if it has a title, user clicked on an event
       if(obj.title){
         editEvent(obj);
       }else{
-        if(hasEventScheduled(obj, $scope.workouts)){
+        if(hasEventScheduled(obj, $scope.liftDays)){
           editEvent(obj);
         }else{
           $scope.$apply(function(){$scope.selectedDate = obj.format();});
