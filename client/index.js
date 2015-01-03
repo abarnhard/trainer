@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  angular.module('trainer', ['ui.router', 'angularFileUpload'])
+  angular.module('trainer', ['ui.router', 'ui.calendar', 'angularFileUpload'])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
       $urlRouterProvider.otherwise('/');
 
