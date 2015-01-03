@@ -1,10 +1,107 @@
-#scheduleModal.reveal-modal.small(data-reveal='')
+#scheduleModal.reveal-modal.large(data-reveal='')
   .row
     .small-12.columns
       h3 Schedule A Workout
   .row.collapse.padded-row
-    .small-10.columns
-      input(type='text', ng-model='newPhase', placeholder='Name')
     .small-2.columns
-      a.button.success.postfix(href='', ng-click='createPhase(newPhase)') Add
+      h6 Date: {{selectedDate}}
+    .small-4.columns
+      select(ng-model='regime', name='regime', ng-options='r as r.name for r in regimes | orderBy:\'name\'')
+        option(value='') Select a Regime
+    .small-1.columns
+      | &nbsp;
+    .small-4.columns
+      select(ng-model='phase', name='phase', ng-options='p as p.name for p in phases | orderBy:\'name\'')
+        option(value='') Select a Phase
+    .small-1.columns
+      | &nbsp;
+  .row
+    .small-3.columns
+      .workout-list-container
+        ul.pricing-table(ng-repeat='workout in workouts')
+          li.title(ng-click='selectWorkout(workout)') {{workout.workoutName}}
+    .small-9.columns
+      .workout-container(ng-show='selectedWorkout')
+        table
+          thead
+            tr
+              th(width='50') Sets
+              th Exercises
+              th(width='75') Reps
+              th(width='75') Weight
+              th(width='75') Rest
+          tbody
+            tr(ng-repeat='set in selectedWorkout.sets')
+              td {{set.count}}
+              td(colspan='3')
+                table
+                  tbody
+                    tr(ng-repeat='exercise in set.exercises')
+                      td {{exercise.name}}
+                      td(width='75') {{exercise.reps}} {{exercise.type}} 
+                      td(width='75') {{exercise.weight}} lbs
+              td {{set.rest}} Sec
+  .row.padded-row
+    .small-12.columns
+      button.button.success(href='', ng-click='addToSchedule(selectedWorkout)', ng-disabled='!selectedWorkout') Add
   a.close-reveal-modal x
+
+//-
+  .row
+    .columns.small-12
+      .row.collapse.padded-row
+        .small-4.columns
+          select(ng-model='regime', name='regime', ng-options='r as r.name for r in regimes | orderBy:\'name\'')
+            option(value='') Select a Regime
+        .small-1.columns
+          a.button.success.postfix(href='', ng-click='showModal(\'#regimeModal\')') +
+        .small-1.columns
+          | &nbsp;
+        .small-4.columns
+          div(ng-show='regime')
+            select(ng-model='phase', name='phase', ng-options='p as p.name for p in phases | orderBy:\'name\'')
+              option(value='') Select a Phase
+        .small-1.columns
+          div(ng-show='regime')
+            a.button.success.postfix(href='', ng-click='showModal(\'#phaseModal\')') +
+        .small-1.columns
+          | &nbsp;
+      .row
+        .columns.small-12
+          form(ng-show='regime')
+            fieldset
+              legend {{regime.name}}
+              fieldset(ng-show='phase')
+                legend {{phase.name}}
+                fieldset
+                  legend
+                    | Workouts &nbsp;
+                    a.label.success.round(href='', ng-click='showModal(\'#workoutModal\')') +
+                    | &nbsp;
+                  .row(ng-show='workouts.length')
+                    .columns.small-12
+                      ul.pricing-table(ng-repeat='workout in workouts')
+                        li.title
+                          | {{workout.workoutName}}
+                          a.label.alert.round(href='', ng-click='deleteWorkout(workout, $index)') X
+                        li.bullet-item
+                          table
+                            thead
+                              tr
+                                th(width='75') Sets
+                                th Exercises
+                                th(width='150') Reps
+                                th(width='150') Weight
+                                th(width='150') Rest
+                            tbody
+                              tr(ng-repeat='set in workout.sets')
+                                td {{set.count}}
+                                td(colspan='3')
+                                  table
+                                    tbody
+                                      tr(ng-repeat='exercise in set.exercises')
+                                        td {{exercise.name}}
+                                        td(width='150') {{exercise.reps}} {{exercise.type}} 
+                                        td(width='150') {{exercise.weight}} lbs
+                                td {{set.rest}} Sec
+                  p(ng-show='!workouts.length') Add A Workout
