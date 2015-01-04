@@ -101,7 +101,7 @@ Workout.deleteWorkout = function(obj, cb){
 
 Workout.findByDay = function(obj, cb){
   pg.query('SELECT * FROM query_workout_by_day($1)', [obj.dayId], function(err, results){
-    console.log(err, results);
+    // console.log(err, results);
     if(err || !results.rows.length){return cb(err || 'ERROR: NO WORKOUT FOUND FOR DAY ID', null);}
     var wk = results.rows[0];
     async.map(wk.setIds, function(setId, done){
