@@ -1,10 +1,7 @@
 #editModal.reveal-modal.small(data-reveal='')
   .row
     .small-12.columns
-      h5
-        | &nbsp;
-        a.label.alert.round(href='', ng-click='unscheduleDay(selectedLiftDay.id)') X
-        | &nbsp; {{selectedLiftDay.title}} - {{selectedLiftDay.start}}
+      h4 {{selectedLiftDay.title}} - {{selectedLiftDay.start}}
   .row.padded-row
     .small-12.columns
       .workout-container
@@ -27,5 +24,8 @@
                       td(width='75') {{exercise.reps}} {{exercise.type}} 
                       td(width='75') {{exercise.weight}} lbs
               td {{set.rest}} Sec
+  .row.padded-row
+    .small-12.columns
+      a.button.alert.small.round(href='', ng-click='unscheduleDay(selectedLiftDay.id)') Delete
   a.close-reveal-modal x
 
