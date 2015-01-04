@@ -102,3 +102,12 @@ INSERT INTO exercises_sets (exercise_id,set_id) VALUES (5,2);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (6,3);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (7,4);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (8,5);
+
+-- add days
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+DELETE FROM days;
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2015-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2015-01-02',2,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2015-01-01',3,4,2);
