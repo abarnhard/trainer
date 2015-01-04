@@ -99,6 +99,27 @@ Workout.deleteWorkout = function(obj, cb){
   });
 };
 
+Workout.findByDay = function(obj, cb){
+  pg.query('SELECT * FROM query_workout_by_day($1)', [obj.dayId], function(err, results){
+    console.log(err, results);
+    if(err || !results.rows.length){return cb(err || 'ERROR: NO WORKOUT FOUND FOR DAY ID', null);}
+    var wk = results.rows[0];
+    async.map(wk.setIds, function(setId, done){
+      pg.query('SELECT * FROM query_set($1)', [setId], function(err, results){
+        if(err){return done(err, null);}
+        var rawSet = results.rows[0],
+            set    = {setId:rawSet.setId, rest:rawSet.rest, count:rawSet.count};
+        set.exercises = rebuildExercises(rawSet);
+        done(err, set);
+      });
+    }, function(err, sets){
+      delete wk.setIds;
+      wk.sets = sets;
+      cb(err, wk);
+    });
+  });
+};
+
 module.exports = Workout;
 
 // HELPER FUNCTIONS //

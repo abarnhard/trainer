@@ -2,24 +2,18 @@
   'use strict';
 
   angular.module('trainer')
-  .controller('ScheduleCtrl', ['$scope', 'Schedule', 'Workout', function($scope, Schedule, Workout){
+  .controller('ScheduleCtrl', ['$scope', '$compile', 'Schedule', 'Workout', function($scope, $compile, Schedule, Workout){
     // initialize variables on scope
-    $scope.liftDays        = [];
-    $scope.regimes         = [];
-    $scope.phases          = [];
-    $scope.workouts        = [];
-    $scope.regime          = null;
-    $scope.phase           = null;
-    $scope.selectedLiftDay = null;
-    $scope.selectedWorkout = null;
-    /*
-      {
-        id: 1,
-        title: 'All Day Event',
-        start: '2015-01-02',
-        allDay: true
-      }
-    */
+    $scope.liftDays         = [];
+    $scope.regimes          = [];
+    $scope.phases           = [];
+    $scope.workouts         = [];
+    $scope.regime           = null;
+    $scope.phase            = null;
+    $scope.selectedLiftDay  = null;
+    $scope.selectedWorkout  = null;
+    $scope.scheduledWorkout = null;
+
     // define querys for workouts modals
     function queryRegimes(){
       Workout.getRegimes().then(function(res){
@@ -43,6 +37,19 @@
     function querySchedule(){
       Schedule.query().then(function(res){
         $scope.liftDays = res.data.schedule;
+        $('#calendar').fullCalendar('destroy');
+        angular.element('#calendar').fullCalendar({
+          header: {
+            left: 'today',
+            center: 'title',
+            right: 'prev,next'
+          },
+          height: 450,
+          eventLimit: true,
+          events: $scope.liftDays,
+          eventClick: $scope.clickHandler,
+          dayClick: $scope.clickHandler
+        });
       });
     }
 
@@ -70,8 +77,13 @@
     function editEvent(obj){
       // input is either a moment object or an event object with a moment date in .start
       var index = findEventIndex((obj.start || obj), $scope.liftDays);
-      $scope.$apply(function(){$scope.selectedLiftDay = $scope.liftDays[index];});
+      $scope.$apply(function(){
+        $scope.selectedLiftDay = $scope.liftDays[index];
+      });
       showModal('#editModal');
+      Workout.findByDayId($scope.selectedLiftDay.id).then(function(res){
+        $scope.scheduledWorkout = res.data.workout;
+      });
     }
 
     $scope.clickHandler = function(obj){
@@ -90,12 +102,24 @@
 
     // add a workout to the schedule
     $scope.addToSchedule = function(workoutId, phaseId, date){
-      console.log(workoutId, date);
+      var parts = date.split('-');
+      date = new Date(parseInt(parts[0],10),parseInt(parts[1],10) - 1,parseInt(parts[2],10));
       $('#scheduleModal').foundation('reveal', 'close');
       Schedule.scheduleWorkout({workoutId: workoutId, phaseId: phaseId, date:date}).then(function(res){
         querySchedule();
       }, function(res){
         console.log('Something broke scheduleing that workout', res);
+      });
+    };
+
+    // remove a workout from the schedule
+    $scope.unscheduleDay = function(dayId){
+      console.log(dayId);
+      $('#editModal').foundation('reveal', 'close');
+      Schedule.deleteDay(dayId).then(function(res){
+        querySchedule();
+      }, function(res){
+        console.log('Something broke deleting that workout', res);
       });
     };
 
@@ -105,7 +129,10 @@
     // set event listeners to clear vars and query workouts/phases
     angular.element(document).on('closed.fndtn.reveal', function(e){
       // console.log('modal closed');
-      $scope.selectedWorkout = $scope.selectedDate = $scope.selectedWorkout = null;
+      $scope.selectedWorkout  = null;
+      $scope.selectedDate     = null;
+      $scope.scheduledWorkout = null;
+      $scope.selectedLiftDay  = null;
     });
 
     $scope.$watch('regime', function(selectedRegime, oldVal){
@@ -128,19 +155,7 @@
 
     // initalize and load calendar widget
     angular.element(document).ready(function(){
-      angular.element('#calendar').fullCalendar({
-        header: {
-          left: 'today',
-          center: 'title',
-          right: 'prev,next'
-        },
-        height: 450,
-        editable: false,
-        eventLimit: true,
-        events: $scope.liftDays,
-        eventClick: $scope.clickHandler,
-        dayClick: $scope.clickHandler
-      });
+      querySchedule();
     });
   }]);
 })();

@@ -11,9 +11,14 @@
         return $http.get('/workouts/schedule');
       }
 
+      function deleteDay(dayId){
+        return $http.delete('/workouts/day/' + dayId);
+      }
+
       return {
         scheduleWorkout: scheduleWorkout,
-        query: query
+        query: query,
+        deleteDay: deleteDay
       };
     }]);
 })();

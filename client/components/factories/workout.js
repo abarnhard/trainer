@@ -32,6 +32,10 @@
         return $http.get('/phases/' + phaseId + '/workouts');
       }
 
+      function findByDayId(dayId){
+        return $http.get('/workouts/day/' + dayId);
+      }
+
       return {
         createRegime:createRegime,
         getRegimes:getRegimes,
@@ -39,7 +43,8 @@
         getPhases:getPhases,
         createWorkout:createWorkout,
         deleteWorkout:deleteWorkout,
-        getWorkouts:getWorkouts
+        getWorkouts:getWorkouts,
+        findByDayId:findByDayId
       };
     }]);
 })();

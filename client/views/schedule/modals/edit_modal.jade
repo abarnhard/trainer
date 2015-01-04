@@ -1,8 +1,31 @@
 #editModal.reveal-modal.small(data-reveal='')
   .row
     .small-12.columns
-      h3 Update Workout
+      h5
+        | &nbsp;
+        a.label.alert.round(href='', ng-click='unscheduleDay(selectedLiftDay.id)') X
+        | &nbsp; {{selectedLiftDay.title}} - {{selectedLiftDay.start}}
   .row.padded-row
     .small-12.columns
-      pre {{selectedLiftDay | json}}
+      .workout-container
+        table
+          thead
+            tr
+              th(width='50') Sets
+              th Exercises
+              th(width='75') Reps
+              th(width='75') Weight
+              th(width='75') Rest
+          tbody
+            tr(ng-repeat='set in scheduledWorkout.sets')
+              td {{set.count}}
+              td(colspan='3')
+                table
+                  tbody
+                    tr(ng-repeat='exercise in set.exercises')
+                      td {{exercise.name}}
+                      td(width='75') {{exercise.reps}} {{exercise.type}} 
+                      td(width='75') {{exercise.weight}} lbs
+              td {{set.rest}} Sec
   a.close-reveal-modal x
+
