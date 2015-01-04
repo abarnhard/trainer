@@ -19,14 +19,14 @@
           User.register($scope.user, $scope.avatar[0]).then(function(res){
             // console.log(res.data);
             $rootScope.rootuser = res.data;
-            $state.go('home');
+            $state.go('schedule');
           }, function(res){
             $scope.user = {};
           });
         }else{
           User.login($scope.user).then(function(res){
             $rootScope.rootuser = res.data;
-            $state.go('home');
+            $state.go('schedule');
           }, function(res){
             $scope.user = {};
           });
