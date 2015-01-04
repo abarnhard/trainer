@@ -150,6 +150,18 @@ describe('Workout', function(){
     });
   });
 
+  describe('.findByDay', function(){
+    it('should find the workout for a specific day', function(done){
+      var dayId = 1,
+          input = {dayId: dayId};
+      Workout.findByDay(input, function(err, workout){
+        expect(err).to.not.be.ok;
+        expect(workout.sets).to.have.length(2);
+        done();
+      });
+    });
+  });
+
 });
 /*
   describe('', function(){

@@ -36,6 +36,40 @@ describe('Schedule', function(){
     });
   });
 
+  describe('.findAll', function(){
+    it('should find all scheduled days for the user', function(done){
+      var userId = 1,
+          input = {userId:userId};
+      Schedule.findAll(input, function(err, schedule){
+        expect(schedule).to.have.length(2);
+        done();
+      });
+    });
+  });
+
+  describe('.deleteDay', function(){
+    it('should delete a day from the schedule', function(done){
+      var userId = 1,
+          dayId  = 1,
+          input  = {userId:userId, dayId:dayId};
+      Schedule.deleteDay(input, function(err, id){
+        expect(err).to.not.be.ok;
+        expect(id).to.equal(dayId);
+        done();
+      });
+    });
+    it('should NOT delete a day from the schedule (wrong user)', function(done){
+      var userId = 2,
+          dayId  = 1,
+          input  = {userId:userId, dayId:dayId};
+      Schedule.deleteDay(input, function(err, id){
+        expect(err).to.not.be.ok;
+        expect(id).to.not.be.ok;
+        done();
+      });
+    });
+  });
+
 });
 /*
   describe('', function(){

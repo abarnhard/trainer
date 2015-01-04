@@ -108,6 +108,6 @@ INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1)
 INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
 INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
 DELETE FROM days;
-INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2015-01-01',1,1,1);
-INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2015-01-02',2,1,1);
-INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2015-01-01',3,4,2);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (1,'2015-01-01',1,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (2,'2015-01-02',2,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (3,'2015-01-01',3,4,2);
