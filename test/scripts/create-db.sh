@@ -26,3 +26,4 @@ psql $1 -f ../../db/functions/delete_workout.sql
 psql $1 -f ../../db/functions/query_phases.sql
 psql $1 -f ../../db/functions/query_workouts.sql
 psql $1 -f ../../db/functions/query_set.sql
+psql $1 -f ../../db/functions/query_schedule.sql

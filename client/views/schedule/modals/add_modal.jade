@@ -43,6 +43,6 @@
               td {{set.rest}} Sec
   .row.padded-row
     .small-12.columns
-      button.button.success(href='', ng-click='addToSchedule(selectedWorkout)', ng-disabled='!selectedWorkout') Add
+      button.button.success(href='', ng-click='addToSchedule(selectedWorkout.workoutId, phase.id, selectedDate)', ng-disabled='!selectedWorkout') Add
   
   a.close-reveal-modal x

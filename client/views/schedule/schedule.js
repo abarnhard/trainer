@@ -4,14 +4,7 @@
   angular.module('trainer')
   .controller('ScheduleCtrl', ['$scope', 'Schedule', 'Workout', function($scope, Schedule, Workout){
     // initialize variables on scope
-    $scope.liftDays = [
-      {
-        id: 1,
-        title: 'All Day Event',
-        start: '2015-01-02',
-        allDay: true
-      }
-    ];
+    $scope.liftDays        = [];
     $scope.regimes         = [];
     $scope.phases          = [];
     $scope.workouts        = [];
@@ -19,7 +12,14 @@
     $scope.phase           = null;
     $scope.selectedLiftDay = null;
     $scope.selectedWorkout = null;
-
+    /*
+      {
+        id: 1,
+        title: 'All Day Event',
+        start: '2015-01-02',
+        allDay: true
+      }
+    */
     // define querys for workouts modals
     function queryRegimes(){
       Workout.getRegimes().then(function(res){
@@ -36,6 +36,13 @@
     function queryWorkouts(phaseId){
       Workout.getWorkouts(phaseId).then(function(res){
         $scope.workouts = res.data.workouts;
+      });
+    }
+
+    // function to get all scheduled workouts
+    function querySchedule(){
+      Schedule.query().then(function(res){
+        $scope.liftDays = res.data.schedule;
       });
     }
 
@@ -79,6 +86,17 @@
           showModal('#scheduleModal');
         }
       }
+    };
+
+    // add a workout to the schedule
+    $scope.addToSchedule = function(workoutId, phaseId, date){
+      console.log(workoutId, date);
+      $('#scheduleModal').foundation('reveal', 'close');
+      Schedule.scheduleWorkout({workoutId: workoutId, phaseId: phaseId, date:date}).then(function(res){
+        querySchedule();
+      }, function(res){
+        console.log('Something broke scheduleing that workout', res);
+      });
     };
 
     // get all regimes for the user

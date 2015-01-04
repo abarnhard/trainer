@@ -12,5 +12,7 @@ module.exports = [
   {method: 'post',   path: '/phases',               config: require('./config/workouts/add_phase')},
   {method: 'get',    path: '/phases/{id}/workouts', config: require('./config/workouts/query_workouts')},
   {method: 'post',   path: '/workouts',             config: require('./config/workouts/add_workout')},
-  {method: 'delete', path: '/workouts/{id}',        config: require('./config/workouts/delete_workout')}
+  {method: 'delete', path: '/workouts/{id}',        config: require('./config/workouts/delete_workout')},
+  {method: 'post',   path: '/workouts/schedule',    config: require('./config/schedule/schedule_workout')},
+  {method: 'get',    path: '/workouts/schedule',    config: require('./config/schedule/query_schedule')}
 ];
