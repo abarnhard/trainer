@@ -24,6 +24,7 @@ psql $1 -f ../../db/functions/add_set.sql
 psql $1 -f ../../db/functions/add_workout.sql
 psql $1 -f ../../db/functions/delete_day.sql
 psql $1 -f ../../db/functions/delete_workout.sql
+psql $1 -f ../../db/functions/get_day.sql
 psql $1 -f ../../db/functions/query_phases.sql
 psql $1 -f ../../db/functions/query_workouts.sql
 psql $1 -f ../../db/functions/query_workout_by_day.sql

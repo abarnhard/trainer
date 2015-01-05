@@ -1,12 +1,12 @@
 'use strict';
 
 var Hapi           = require('hapi'),
-    server         = new Hapi.Server({connections: {routes: {cors: true}}}),
+    server         = new Hapi.Server(),
     routes         = require('./routes/routes'),
     plugins        = require('./lib/plugins'),
     authentication = require('./lib/authentication');
 
-server.connection({port:process.env.PORT});
+server.connection({port:process.env.PORT, routes: {cors: {origin: ['http://localhost:8100'],credentials: true}}});
 
 server.register(plugins, function(){
   server.auth.strategy('session', 'cookie', true, authentication);

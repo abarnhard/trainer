@@ -25,6 +25,13 @@ Schedule.findAll = function(obj, cb){
   });
 };
 
+Schedule.findOne = function(obj, cb){
+  pg.query('SELECT * FROM get_day($1,$2)', [obj.userId, obj.date], function(err, results){
+    var schedule = convertDatesToStrings(results.rows);
+    cb(err, schedule[0]);
+  });
+};
+
 Schedule.deleteDay = function(obj, cb){
   pg.query('SELECT delete_day($1,$2)', [obj.userId,obj.dayId], function(err, results){
     var id = (results || {rows:[{}]}).rows[0].delete_day;
