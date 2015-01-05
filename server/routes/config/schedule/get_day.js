@@ -17,9 +17,9 @@ module.exports = {
   },
   handler: function(request, reply){
     var params = {date: request.params.date, userId:request.auth.credentials.id};
-    Schedule.findOne(params, function(err, schedule){
-      if(err){console.log('ERROR: Workout.getPhases', err);}
-      reply({schedule:schedule}).code(err ? 418 : 200);
+    Schedule.findOne(params, function(err, day){
+      if(err || !day){console.log('ERROR: Schedule.findOne', err);}
+      reply({day:day}).code(err ? 418 : 200);
     });
   }
 };
