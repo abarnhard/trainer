@@ -1,7 +1,7 @@
 'use strict';
 
 var Hapi           = require('hapi'),
-    server         = new Hapi.Server(),
+    server         = new Hapi.Server({connections: {routes: {cors: true}}}),
     routes         = require('./routes/routes'),
     plugins        = require('./lib/plugins'),
     authentication = require('./lib/authentication');
