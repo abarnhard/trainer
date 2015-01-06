@@ -531,3 +531,31 @@ INSERT INTO exercises_sets (exercise_id,set_id) VALUES (29,15);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (30,16);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (31,16);
 INSERT INTO exercises_sets (exercise_id,set_id) VALUES (32,16);
+
+
+-- add days
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+INSERT INTO days (start,workout_id,phase_id,user_id) VALUES ('2000-01-01',1,1,1);
+DELETE FROM days;
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (1,'2015-01-06',1,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (2,'2015-01-07',2,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (3,'2015-01-08',3,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (4,'2015-01-09',4,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (5,'2015-01-10',1,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (6,'2015-01-11',2,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (7,'2015-01-12',3,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (8,'2015-01-13',4,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (9,'2015-01-14',1,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (10,'2015-01-15',2,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (11,'2015-01-16',3,1,1);
+INSERT INTO days (id,start,workout_id,phase_id,user_id) VALUES (12,'2015-01-17',4,1,1);
