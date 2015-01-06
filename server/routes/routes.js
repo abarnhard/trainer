@@ -13,6 +13,7 @@ module.exports = [
   {method: 'get',    path: '/phases/{id}/workouts',     config: require('./config/workouts/query_workouts')},
   {method: 'get',    path: '/workouts/day/{id}',        config: require('./config/workouts/find_by_day')},
   {method: 'post',   path: '/workouts',                 config: require('./config/workouts/add_workout')},
+  {method: 'get',    path: '/workouts/{id}',            config: require('./config/workouts/find_workout')},
   {method: 'delete', path: '/workouts/{id}',            config: require('./config/workouts/delete_workout')},
   {method: 'post',   path: '/workouts/schedule',        config: require('./config/schedule/schedule_workout')},
   {method: 'get',    path: '/workouts/schedule',        config: require('./config/schedule/query_schedule')},
