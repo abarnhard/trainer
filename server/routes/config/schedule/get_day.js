@@ -8,7 +8,7 @@ module.exports = {
   tags:['workouts', 'schedule'],
   validate: {
     params: {
-      date: Joi.date().required()
+      date: Joi.string().required()
     }
   },
   cors: {
@@ -16,10 +16,18 @@ module.exports = {
     credentials: true
   },
   handler: function(request, reply){
-    var params = {date: request.params.date, userId:request.auth.credentials.id};
+    console.log(request.params.date);
+    var date   = convertStringToDate(request.params.date),
+        params = {date: date, userId:request.auth.credentials.id};
     Schedule.findOne(params, function(err, day){
       if(err || !day){console.log('ERROR: Schedule.findOne', err);}
       reply({day:day}).code(err ? 418 : 200);
     });
   }
 };
+
+// HELPER FUNCTIONS //
+function convertStringToDate(s){
+  var parts = s.split('-');
+  return new Date(parseInt(parts[0],10),parseInt(parts[1],10) - 1,parseInt(parts[2],10));
+}
