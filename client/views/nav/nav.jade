@@ -12,7 +12,13 @@
           li: a(ui-sref='register') Register
           li: a(ui-sref='login') Login
         ul.right(ng-show='rootuser.username')
-          li: a(ui-sref='schedule') Schedule
+          li.divider
           li: a(ui-sref='workouts') Workouts
           li.divider
-          li: a#avatarlink(ng-click='logout()'): img#avatarimg(ng-src='{{rootuser.avatar}}')
+          li: a(ui-sref='schedule') Schedule
+          li.divider
+          li.has-dropdown
+            a(href='') {{rootuser.username}}
+            ul.dropdown
+              li: a(href='', ng-click='logout()') Log Out
+
