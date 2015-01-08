@@ -70,6 +70,43 @@ describe('Schedule', function(){
     });
   });
 
+  describe('.findOne', function(){
+    it('should return a single day from the database for a date', function(done){
+      var userId = 1,
+          date   = new Date(2015, 0, 1),
+          input  = {userId: userId, date: date};
+
+      Schedule.findOne(input, function(err, day){
+        // console.log(err, day);
+        expect(err).to.not.be.ok;
+        expect(day.id).to.equal(1);
+        done();
+      });
+    });
+  });
+
+  describe('.markDayComplete', function(){
+    it('should change day completed flag to true', function(done){
+      var userId = 1,
+          dayId = 1,
+          input = {dayId: dayId, userId: userId};
+
+      Schedule.markDayComplete(input, function(err, id){
+        expect(err).to.not.be.ok;
+        expect(id).to.equal(dayId);
+
+        var date   = new Date(2015, 0, 1),
+            input  = {userId: userId, date: date};
+        Schedule.findOne(input, function(err, day){
+          // console.log(err, day);
+          expect(err).to.not.be.ok;
+          expect(day.isComplete).to.equal(true);
+          done();
+        });
+      });
+    });
+  });
+
 });
 /*
   describe('', function(){

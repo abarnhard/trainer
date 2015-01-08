@@ -26,7 +26,9 @@ Schedule.findAll = function(obj, cb){
 };
 
 Schedule.findOne = function(obj, cb){
+  // console.log(obj);
   pg.query('SELECT * FROM get_day($1,$2)', [obj.userId, obj.date], function(err, results){
+    // console.log(results);
     var schedule = convertDatesToStrings(results.rows);
     cb(err, schedule[0]);
   });
@@ -41,7 +43,7 @@ Schedule.deleteDay = function(obj, cb){
 
 Schedule.markDayComplete = function(obj, cb){
   pg.query('UPDATE days SET completed = true WHERE id=$1 AND user_id=$2 RETURNING id;', [obj.dayId, obj.userId], function(err, results){
-    console.log(results);
+    // console.log(results);
     var id = (results || {rows:[{}]}).rows[0].id;
     cb(err, id);
   });
