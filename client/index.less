@@ -24,37 +24,72 @@
 /* ---------------------------------------------------------------------- */
 
 /* ---------------------------     MAIN      ---------------------------- */
-html, body{
+* {
+  margin:0;
+  padding:0;
+}
+
+html, body {
   height: 100%;
 }
-* {margin:0;padding:0;}
-#wrap{
+
+#wrap {
   min-height: 100%;
 }
-#main{
+
+#main {
   overflow: auto;
 }
+
 .full-height {
   min-height: 100%;
 }
+
 div[ui-view] {
   min-height: 100%;
 }
 /* ------------------------------------------------------------------- */
 
 /* --------------------------    NAV BAR    -------------------------- */
-#avatarlink{
+#avatarlink {
   height: 40px;
 }
 
-#avatarimg{
+#avatarimg {
   height: 40px;
   width: 40px;
 }
 /* ------------------------------------------------------------------- */
 
 /* --------------------------  Row Helpers  -------------------------- */
-.padded-row{
+.padded-row {
   padding: 5px 0;
 }
+/* ------------------------------------------------------------------- */
+
+/* --------------------------  Home Styles  -------------------------- */
+.main-title {
+  position: absolute;
+  width: 500px;
+  height: 112px;
+  color: white;
+  text-align: center;
+  top: 25%;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: -56px;
+}
+
+.sub-title {
+  position: absolute;
+  width: 500px;
+  height: 112px;
+  color: white;
+  text-align: center;
+  top: 75%;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: -56px;
+}
+
 /* ------------------------------------------------------------------- */
