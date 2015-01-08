@@ -4,7 +4,7 @@ html.no-js(ng-app='trainer', lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title ngTrainer
+    title HIIT It
     link(rel='stylesheet', href='/vendor/foundation/css/normalize.css')
     link(rel='stylesheet', href='/vendor/foundation/css/foundation.css')
     link(rel='stylesheet', href='/vendor/fontawesome/css/font-awesome.css')
@@ -18,8 +18,10 @@ html.no-js(ng-app='trainer', lang='en')
     script(src='/vendor/foundation/js/vendor/modernizr.js')
   body
     #wrap(ng-cloak)
-      include views/nav/nav
-      include views/main/main
+      #main
+        include views/nav/nav
+        include views/main/main
+    #footer &nbsp;
       //-include views/footer/footer
 
     script(src='/vendor/foundation/js/foundation.min.js')
