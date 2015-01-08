@@ -18,15 +18,15 @@ DELETE FROM regimes;
 INSERT INTO regimes (id,name,user_id) VALUES (1,'HIIT It',1);
 
 -- add phases
-INSERT INTO phases (name) VALUES ('a1');
-INSERT INTO phases (name) VALUES ('a2');
-INSERT INTO phases (name) VALUES ('a3');
-INSERT INTO phases (name) VALUES ('a4');
+INSERT INTO phases (name,user_id) VALUES ('a1',1);
+INSERT INTO phases (name,user_id) VALUES ('a2',1);
+INSERT INTO phases (name,user_id) VALUES ('a3',1);
+INSERT INTO phases (name,user_id) VALUES ('a4',1);
 DELETE FROM phases;
-INSERT INTO phases (id,name) VALUES (1,'Phase 1');
-INSERT INTO phases (id,name) VALUES (2,'Phase 2');
-INSERT INTO phases (id,name) VALUES (3,'Phase 3');
-INSERT INTO phases (id,name) VALUES (4,'Phase 4');
+INSERT INTO phases (id,name,user_id) VALUES (1,'Phase 1',1);
+INSERT INTO phases (id,name,user_id) VALUES (2,'Phase 2',1);
+INSERT INTO phases (id,name,user_id) VALUES (3,'Phase 3',1);
+INSERT INTO phases (id,name,user_id) VALUES (4,'Phase 4',1);
 
 -- add phase regime join
 INSERT INTO phases_regimes (phase_id,regime_id) VALUES (1,1);

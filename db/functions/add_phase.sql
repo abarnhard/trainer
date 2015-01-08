@@ -11,7 +11,7 @@ BEGIN
     RETURN 0;
   ELSE
     -- insert the phase
-    INSERT INTO phases ("name") VALUES (p_name) returning id into pid;
+    INSERT INTO phases ("name",user_id) VALUES (p_name,u_id) returning id into pid;
     -- if that works, insert info into join table
     INSERT INTO phases_regimes (phase_id, regime_id) VALUES (pid, r_id);
     -- return id of new phase
