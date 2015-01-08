@@ -72,22 +72,8 @@ Workout.getWorkouts = function(obj, cb){
     // console.log(err, results.rows);
     async.mapSeries(results.rows, function(wk, finished){
       // console.log(wk);
-      async.map(wk.setIds, function(setId, done){
-        pg.query('SELECT * FROM query_set($1)', [setId], function(err, results){
-          if(err){return done(err, null);}
-          var rawSet = results.rows[0],
-              set    = {setId:rawSet.setId, rest:rawSet.rest, count:rawSet.count};
-          set.exercises = rebuildExercises(rawSet);
-          done(err, set);
-        });
-      }, function(err, sets){
-        delete wk.setIds;
-        wk.sets = sets;
-        finished(null, wk);
-      });
-    }, function(err, workouts){
-      cb(err, workouts);
-    });
+      populateSets(wk, finished);
+    }, cb);
   });
 };
 
@@ -104,19 +90,7 @@ Workout.findByDay = function(obj, cb){
     // console.log(err, results);
     if(err || !results.rows.length){return cb(err || 'ERROR: NO WORKOUT FOUND FOR DAY ID', null);}
     var wk = results.rows[0];
-    async.map(wk.setIds, function(setId, done){
-      pg.query('SELECT * FROM query_set($1)', [setId], function(err, results){
-        if(err){return done(err, null);}
-        var rawSet = results.rows[0],
-            set    = {setId:rawSet.setId, rest:rawSet.rest, count:rawSet.count};
-        set.exercises = rebuildExercises(rawSet);
-        done(err, set);
-      });
-    }, function(err, sets){
-      delete wk.setIds;
-      wk.sets = sets;
-      cb(err, wk);
-    });
+    populateSets(wk, cb);
   });
 };
 
@@ -125,25 +99,29 @@ Workout.findById = function(obj, cb){
     // console.log(err, results);
     if(err || !results.rows.length){return cb(err || 'ERROR: NO WORKOUT FOUND WITH THAT ID', null);}
     var wk = results.rows[0];
-    async.map(wk.setIds, function(setId, done){
-      pg.query('SELECT * FROM query_set($1)', [setId], function(err, results){
-        if(err){return done(err, null);}
-        var rawSet = results.rows[0],
-            set    = {setId:rawSet.setId, rest:rawSet.rest, count:rawSet.count};
-        set.exercises = rebuildExercises(rawSet);
-        done(err, set);
-      });
-    }, function(err, sets){
-      delete wk.setIds;
-      wk.sets = sets;
-      cb(err, wk);
-    });
+    populateSets(wk, cb);
   });
 };
 
 module.exports = Workout;
 
 // HELPER FUNCTIONS //
+function populateSets(wk, cb){
+  async.map(wk.setIds, function(setId, done){
+    pg.query('SELECT * FROM query_set($1)', [setId], function(err, results){
+      if(err){return done(err, null);}
+      var rawSet = results.rows[0],
+          set    = {setId:rawSet.setId, rest:rawSet.rest, count:rawSet.count};
+      set.exercises = rebuildExercises(rawSet);
+      done(err, set);
+    });
+  }, function(err, sets){
+    delete wk.setIds;
+    wk.sets = sets;
+    cb(err, wk);
+  });
+}
+
 function rebuildExercises(obj){
   var exercises = obj.exerciseIds.map(function(id, i){
     var exercise = {

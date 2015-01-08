@@ -162,6 +162,19 @@ describe('Workout', function(){
     });
   });
 
+  describe('.findById', function(){
+    it('should find a workout by it\'s Id', function(done){
+      var wkId = 1,
+          input = {wkId: wkId};
+
+      Workout.findById(input, function(err, wk){
+        expect(err).to.not.be.ok;
+        expect(wk.sets).to.have.length(2);
+        done();
+      });
+    });
+  });
+
 });
 /*
   describe('', function(){
