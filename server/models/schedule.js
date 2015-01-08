@@ -39,6 +39,14 @@ Schedule.deleteDay = function(obj, cb){
   });
 };
 
+Schedule.markDayComplete = function(obj, cb){
+  pg.query('UPDATE days SET completed = true WHERE id=$1 AND user_id=$2 RETURNING id;', [obj.dayId, obj.userId], function(err, results){
+    console.log(results);
+    var id = (results || {rows:[{}]}).rows[0].id;
+    cb(err, id);
+  });
+};
+
 module.exports = Schedule;
 
 // HELPER FUNCTIONS //
