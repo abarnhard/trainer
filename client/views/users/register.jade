@@ -11,10 +11,14 @@
           .small-12.columns
             label Username
             input#username(type='text', name='username', ng-model='user.username', required, ng-minlength='3', ng-maxlength='20')
+            small.help-text Min Length 3 chars
+            br
         .row
           .small-12.columns
             label Password
-            input#password(type='password', name='password', ng-model='user.password', required, ng-minlength='3', ng-maxlength='20')
+            input#password(type='password', name='password', ng-model='user.password', required, ng-minlength='4', ng-maxlength='20')
+            small.help-text Min Length 4 chars
+            br
         .row
           .small-12.columns
             label Avatar
