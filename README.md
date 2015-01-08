@@ -4,8 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/ABarnhard/trainer/badge.png)](https://coveralls.io/r/ABarnhard/trainer)
 
 ### Screenshots
-![Image1](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/one.jpg)
-![Image2](https://raw.githubusercontent.com/nss-cohort-2014-06-07/express-template/master/docs/screenshots/two.jpg)
+![Image1](https://raw.githubusercontent.com/ABarnhard/trainer/master/docs/screenshots/sc_1.png)
 
 ### Description
 HIIT workout app to be used with the companion mobile application.
