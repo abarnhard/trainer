@@ -2,6 +2,7 @@
 ### Code Badges
 [![Build Status](https://travis-ci.org/ABarnhard/trainer.svg)](https://travis-ci.org/ABarnhard/trainer)
 [![Coverage Status](https://coveralls.io/repos/ABarnhard/trainer/badge.png)](https://coveralls.io/r/ABarnhard/trainer)
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/adam-evernote.svg)](https://saucelabs.com/u/adam-evernote)
 
 ### Screenshots
 ![Image1](https://raw.githubusercontent.com/ABarnhard/trainer/master/docs/screenshots/sc_1.png)
