@@ -17,6 +17,8 @@
     "postinstall": "grunt deploy",
     "syntax": "grunt build",
     "test": "make test",
+    "e2e": "make test-e2e",
+    "e2e-d": "make test-e2e-d",
     "coveralls": "make test-cov | coveralls"
   },
   "repository": {
@@ -59,6 +61,7 @@
   "devDependencies": {
     "chai": "^1.10.0",
     "coveralls": "^2.11.2",
-    "lab": "^5.1.0"
+    "lab": "^5.1.0",
+    "protractor": "^1.6.0"
   }
 }

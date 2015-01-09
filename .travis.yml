@@ -7,14 +7,19 @@ addons:
   postgresql: "9.3"
 notifications:
   email: false
-script:
-  - npm run syntax
-  - npm test
 before_script:
   - psql -c 'create database trainer_test;' -U postgres
   - cd test/scripts; ./create-db.sh trainer_test; cd ../..;
+  # specify port here instead of in the ENV section so we don't 
+  # have conflicts between node server for unit tests and this one.
+  - PORT=9000 node server/index.js& # & on the end runs it in the background.
+  - sleep 5 # wait for server to boot up
+script:
+  - npm run syntax
+  - npm test
 after_script:
   - npm run coveralls
+  - npm run e2e
 env:
   global:
     - DATABASE_URL=postgres://postgres@localhost/trainer_test
@@ -23,3 +28,7 @@ env:
     - secure: "hDxMsB2NuJzuGQTUiKJ/Mky//PcXPMIVLa5Ye6yvTD3wzfvg/bm4juQQw0+5o114ytB625PWIh/vVb8d/z/JAqLnavS87WhzN6kvf/N/F6yTwZxq7MoCNMTsFrITLT/iYWWpnbV1wdZsSn3TodEOtPi666t4FF6nPZfGKgIyGt4="
     # AWS_ACCESS_KEY_ID
     - secure: "hGdnpHkEbBgjgQl0m6ZdxxU91HQVhtB1PyqF2CvCLWS5XSFQiduKUspU2jOyCj60QzXeHILt0qZ/WWtCkWLYw9Z4wa/SwpneVWtpRDpnJGU+ByQQTNa4+2o9T7YhTzGSltZWglbhrhXEhdRZdHDcf2TvvuZkMpAb72CgsOBfAVc="
+    # SAUCE_USERNAME
+    - secure: "PUuhYFHCcBQ5ZHcFTNJvgz1rf/aAgeuSoV+21ZcP5jzV/dLt32arwxfGwnAiliyxsjfB2TxEcS0wUyhj5XmCFLITmcuBBrAWnDcrmzwTdN2FE3axE+Wemuu/cMfXIVAWZvmFAMsYVfzlQFHR2QvQqZiy/Sj8H5EIaLp5lx6k5oY="
+    # SAUCE_ACCESS_KEY
+    - secure: "W53c7XI/rbpZk/SjG8PszmDFdfruMo/og7H1g87iI/l7EeKqUK2tWe3vAlkVOV2wIWt0zkEDl6lX5qRINsJ9J8lBPvj2m/z7Sc3vQPNcZE84/t2jGyLILiFhJfGT+nd13Lk5QMdjbFrUiMMqhG76qknPQtbGerpiVK2AiT5gbyY="
