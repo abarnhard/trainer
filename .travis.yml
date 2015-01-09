@@ -30,6 +30,6 @@ env:
     # AWS_ACCESS_KEY_ID
     - secure: "hGdnpHkEbBgjgQl0m6ZdxxU91HQVhtB1PyqF2CvCLWS5XSFQiduKUspU2jOyCj60QzXeHILt0qZ/WWtCkWLYw9Z4wa/SwpneVWtpRDpnJGU+ByQQTNa4+2o9T7YhTzGSltZWglbhrhXEhdRZdHDcf2TvvuZkMpAb72CgsOBfAVc="
     # SAUCE_USERNAME
-    - secure: "PUuhYFHCcBQ5ZHcFTNJvgz1rf/aAgeuSoV+21ZcP5jzV/dLt32arwxfGwnAiliyxsjfB2TxEcS0wUyhj5XmCFLITmcuBBrAWnDcrmzwTdN2FE3axE+Wemuu/cMfXIVAWZvmFAMsYVfzlQFHR2QvQqZiy/Sj8H5EIaLp5lx6k5oY="
+    - secure: "TMeuqni3Foyx9h+ZfWfHCqpbZdmPUqS33E92Ju+PdezLuzOKuHs1jGLBs4c6AZ/4Zr/G1Qh5NP8qWp4hBU3UKWOn9I9/zR3qzv5My4567FMgxdb+BwrIImm4AMrvCPHSfVtoxcUQ7xSrbbsha1/B2Da3X/Lmp6nobT33K1mbCu4="
     # SAUCE_ACCESS_KEY
-    - secure: "W53c7XI/rbpZk/SjG8PszmDFdfruMo/og7H1g87iI/l7EeKqUK2tWe3vAlkVOV2wIWt0zkEDl6lX5qRINsJ9J8lBPvj2m/z7Sc3vQPNcZE84/t2jGyLILiFhJfGT+nd13Lk5QMdjbFrUiMMqhG76qknPQtbGerpiVK2AiT5gbyY="
+    - secure: "ReKXmX4VRSl8sLtpm1/mIfKkD2yU2fCA0L9gTaSNQs6F4ZvWfRO0LDSm7oZtStyR4VJpafmFi8kW4jhnlUgtL3zD+lG8vA/On+WUMAqjMYGF6Kxr3hIMf4nXf4xWihBSgw8lWiQG56MDgvoDkPR213ViCUOkshSP+jgeymprDzU="
