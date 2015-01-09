@@ -45,7 +45,6 @@ describe('Workouts', function(){
       };
 
       server.inject(options, function(res){
-        console.log(res.result);
         expect(res.statusCode).to.equal(200);
         expect(res.result.regimes).to.have.length(1);
         expect(res.result.regimes[0].name).to.equal('Test Regime 1 - Bob');
