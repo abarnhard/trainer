@@ -10,12 +10,35 @@ describe('workouts index', function(){
   });
 
   it('should display regime & load phases for regime', function(){
-    element(by.cssContainingText('option', 'Test Regime 1 - Bob')).click();
+    var regimeName = 'Test Regime 1 - Bob';
+
+    selectOptionByText(regimeName);
+
     expect(element.all(by.css('select[ng-model="phase"] option')).count()).toBeGreaterThan(1);
     expect(element(by.css('form > fieldset > legend')).isDisplayed()).toBeTruthy();
+    expect(element(by.css('form > fieldset > legend')).getText()).toEqual(regimeName);
+  });
+
+  it('should display a phase & all workouts for that phase', function(){
+    var regimeName = 'Test Regime 1 - Bob',
+        phaseName  = 'Test Phase 1';
+
+    selectOptionByText(regimeName);
+    selectOptionByText(phaseName);
+
+    expect(element(by.css('form > fieldset > fieldset > legend')).isDisplayed()).toBeTruthy();
+    expect(element(by.css('form > fieldset > fieldset > legend')).getText()).toEqual(phaseName);
+
+    expect(element(by.css('form > fieldset > fieldset > fieldset > legend')).isDisplayed()).toBeTruthy();
+    expect(element(by.css('form > fieldset > fieldset > fieldset > legend')).getText()).toMatch(/Workouts/);
+    expect(element.all(by.repeater('workout in workouts')).count()).toBeGreaterThan(0);
   });
 
 });
+
+function selectOptionByText(text){
+  element(by.cssContainingText('option', text)).click();
+}
 
 function loginAndGotoWorkouts(){
   browser.get('/#/login');
