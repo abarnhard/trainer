@@ -1,4 +1,4 @@
-/* jshint expr:true */
+/* jshint expr:true, -W079 */
 
 'use strict';
 
@@ -7,6 +7,9 @@ var expect     = require('chai').expect,
     h          = require('../helpers/helpers'),
     server     = require('../../server/index'),
     Lab        = require('lab'),
+    FormData   = require('form-data'),
+    sToP       = require('stream-to-promise'),
+    fs         = require('fs'),
     lab        = exports.lab = Lab.script(),
     describe   = lab.describe,
     it         = lab.it,
@@ -33,41 +36,32 @@ describe('Users', function(){
       });
     });
   });
-  /* // Need to figure out how to mock form post
+
   describe('post /register', function(){
     it('should register a new User', function(done){
-      var options = {
-        method: 'post',
-        url: '/register',
-        headers: {},
-        payload: '------WebKitFormBoundaryoNzzeFLdoHoXxySX'+String.fromCharCode(13,10)+
-                 'Content-Disposition: form-data; name="email"'+String.fromCharCode(13,10)+
-                 String.fromCharCode(13,10)+
-                 'jim@gmail.com'+String.fromCharCode(13,10)+
-                 '------WebKitFormBoundaryoNzzeFLdoHoXxySX'+String.fromCharCode(13,10)+
-                 'Content-Disposition: form-data; name="username"'+String.fromCharCode(13,10)+
-                  String.fromCharCode(13,10)+
-                  'Jim'+String.fromCharCode(13,10)+
-                  '------WebKitFormBoundaryoNzzeFLdoHoXxySX'+String.fromCharCode(13,10)+
-                  'Content-Disposition: form-data; name="password"'+String.fromCharCode(13,10)+
-                  String.fromCharCode(13,10)+
-                  '1234'+String.fromCharCode(13,10)+
-                  '------WebKitFormBoundaryoNzzeFLdoHoXxySX'+String.fromCharCode(13,10)+
-                  'Content-Disposition: form-data; name="file"; filename="test.png"'+String.fromCharCode(13,10)+
-                  'Content-Type: image/png'+String.fromCharCode(13,10)+
-                  String.fromCharCode(13,10)+
-                  String.fromCharCode(13,10)+
-                  '------WebKitFormBoundaryoNzzeFLdoHoXxySX--'
-      };
-      options.headers['Content-Type'] = 'multipart/form-data; boundary=----WebKitFormBoundaryoNzzeFLdoHoXxySX';
-      options.headers['Content-Length'] = 713;
-      server.inject(options, function(response){
-        expect(response.statusCode).to.equal(200);
-        done();
+      var form = new FormData();
+      form.append('email', 'sam2@aol.com');
+      form.append('username', 'BigSam2');
+      form.append('password', '1234');
+      form.append('file', fs.createReadStream(__dirname + '/../fixtures/test.png'));
+      sToP(form).then(function(submitForm){
+        // console.log(form);
+        var options = {
+              method: 'post',
+              url: '/register',
+              headers: form.getHeaders(),
+              payload: submitForm
+            };
+        server.inject(options, function(res){
+          // console.log(res);
+          expect(res.statusCode).to.equal(200);
+          expect(res.result.username).to.equal('BigSam2');
+          done();
+        });
       });
     });
   });
-  */
+
   describe('post /login', function(){
     it('should login a User', function(done){
       var options = {
