@@ -2,19 +2,19 @@
 
 'use strict';
 
-var expect     = require('chai').expect,
-    cp         = require('child_process'),
-    h          = require('../helpers/helpers'),
-    server     = require('../../server/index'),
-    Lab        = require('lab'),
-    FormData   = require('form-data'),
-    sToP       = require('stream-to-promise'),
-    fs         = require('fs'),
-    lab        = exports.lab = Lab.script(),
-    describe   = lab.describe,
-    it         = lab.it,
-    beforeEach = lab.beforeEach,
-    db         = h.getdb();
+var expect          = require('chai').expect,
+    cp              = require('child_process'),
+    h               = require('../helpers/helpers'),
+    server          = require('../../server/index'),
+    Lab             = require('lab'),
+    FormData        = require('form-data'),
+    streamToPromise = require('stream-to-promise'),
+    fs              = require('fs'),
+    lab             = exports.lab = Lab.script(),
+    describe        = lab.describe,
+    it              = lab.it,
+    beforeEach      = lab.beforeEach,
+    db              = h.getdb();
 
 describe('Users', function(){
   var cookie;
@@ -44,7 +44,7 @@ describe('Users', function(){
       form.append('username', 'BigSam2');
       form.append('password', '1234');
       form.append('file', fs.createReadStream(__dirname + '/../fixtures/test.png'));
-      sToP(form).then(function(submitForm){
+      streamToPromise(form).then(function(submitForm){
         // console.log(form);
         var options = {
               method: 'post',
