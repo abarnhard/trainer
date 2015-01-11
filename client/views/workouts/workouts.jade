@@ -9,12 +9,10 @@
       .small-1.columns
         | &nbsp;
       .small-4.columns
-        div(ng-show='regime')
-          select(ng-model='phase', name='phase', ng-options='p as p.name for p in phases | orderBy:\'name\'')
-            option(value='') Select a Phase
+        select(ng-model='phase', name='phase', ng-options='p as p.name for p in phases | orderBy:\'name\'')
+          option(value='') Select a Phase
       .small-1.columns
-        div(ng-show='regime')
-          a.button.success.postfix(href='', ng-click='showModal(\'#phaseModal\')') +
+        button.button.success.postfix(href='', ng-click='showModal(\'#phaseModal\')', ng-disabled='!regime') +
       .small-1.columns
         | &nbsp;
     .row
