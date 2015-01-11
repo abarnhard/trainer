@@ -53,7 +53,7 @@
                                     tr(ng-repeat='exercise in set.exercises')
                                       td {{exercise.name}}
                                       td(width='150') {{formatReps(exercise.reps, exercise.type)}}
-                                      td(width='150') {{formatWeight(exercise.weight)}}
+                                      td(width='150') {{formatWeight(exercise.weight, true)}}
                               td {{formatRest(set.rest)}}
                 p(ng-show='!workouts.length') Add A Workout
 
