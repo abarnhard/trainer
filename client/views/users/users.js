@@ -22,6 +22,7 @@
             $state.go('workouts');
           }, function(res){
             $scope.user = {};
+            alertify.log('Error registering, try different username/email');
           });
         }else{
           User.login($scope.user).then(function(res){
@@ -29,6 +30,7 @@
             $state.go('workouts');
           }, function(res){
             $scope.user = {};
+            alertify.log('Incorrect Credentials, try again');
           });
         }
       }
