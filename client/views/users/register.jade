@@ -1,31 +1,38 @@
 .row
-  .small-6.columns
-    form(name='userForm')
-      fieldset
-        legend {{mode}}
-        .row
-          .small-12.columns
-            label Email
-            input#email(type='text', name='email', ng-model='user.email', required, ng-minlength='3')
-        .row
-          .small-12.columns
-            label Username
-            input#username(type='text', name='username', ng-model='user.username', required, ng-minlength='3', ng-maxlength='20')
-            small.help-text Min Length 3 chars
-            br
-        .row
-          .small-12.columns
-            label Password
-            input#password(type='password', name='password', ng-model='user.password', required, ng-minlength='4', ng-maxlength='20')
-            small.help-text Min Length 4 chars
-            br
-        .row
-          .small-12.columns
-            label Avatar
-            input#avatar(ng-file-select, type='file', name='file', accept="image/*", ng-model='avatar', ng-file-model='avatar', ng-multiple='false')
-        .row
-          .small-12.columns
-            br
-            button.button.radius.small(ng-click='submit(user)') Submit
-  .small-6.columns
-    img.gym(src='/assets/img/gym.jpg')
+  .small-12.columns
+    .gym
+      .row
+        .small-5.columns
+          | &nbsp;
+        .small-6.columns
+          form(name='userForm')
+            fieldset
+              legend {{mode}}
+              .row
+                .small-12.columns
+                  label Email
+                  input#email(type='text', name='email', ng-model='user.email', required, ng-minlength='3')
+              .row
+                .small-12.columns
+                  label Username
+                  input#username(type='text', name='username', ng-model='user.username', required, ng-minlength='3', ng-maxlength='20')
+                  small.help-text Min Length 3 chars
+                  br
+              .row
+                .small-12.columns
+                  label Password
+                  input#password(type='password', name='password', ng-model='user.password', required, ng-minlength='4', ng-maxlength='20')
+                  small.help-text Min Length 4 chars
+                  br
+              .row
+                .small-12.columns
+                  label Avatar
+                  input#avatar(ng-file-select, type='file', name='file', accept="image/*", ng-model='avatar', ng-file-model='avatar', ng-multiple='false')
+              .row
+                .small-12.columns
+                  br
+                  button.button.radius.small(ng-click='submit(user)') Submit
+        .small-1.columns
+          | &nbsp;
+
+

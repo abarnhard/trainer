@@ -8,9 +8,12 @@
           a(href="/#/"): span
       section.top-bar-section(ng-cloak)
         ul.right(ng-show='!rootuser.username')
+          li.divider
           li: a(ui-sref='home') Home
-          li: a(ui-sref='register') Register
+          li.divider
           li: a(ui-sref='login') Login
+          li.divider
+          li: a(ui-sref='register') Register
         ul.right(ng-show='rootuser.username')
           li.divider
           li: a(ui-sref='workouts') Workouts
