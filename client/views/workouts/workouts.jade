@@ -52,9 +52,9 @@
                                   tbody
                                     tr(ng-repeat='exercise in set.exercises')
                                       td {{exercise.name}}
-                                      td(width='150') {{exercise.reps}} {{exercise.type}} 
-                                      td(width='150') {{exercise.weight}} lbs
-                              td {{set.rest}} Sec
+                                      td(width='150') {{formatReps(exercise.reps, exercise.type)}}
+                                      td(width='150') {{formatWeight(exercise.weight)}}
+                              td {{formatRest(set.rest)}}
                 p(ng-show='!workouts.length') Add A Workout
 
 include modals/regime_modal

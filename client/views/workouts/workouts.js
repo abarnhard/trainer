@@ -48,6 +48,30 @@
         });
       }
 
+    // functions to format exercise stats for display
+    $scope.formatWeight = function(lbs, verbose){
+      if(lbs === 0){
+        return verbose ? 'Body Weight' : 'BW'; // 0lbs is a body weight (bw) exercise
+      }else{
+        return lbs + ' lbs';
+      }
+    };
+    $scope.formatReps = function(reps, type){
+      // console.log(reps, type);
+      if(reps === 0){
+        return 'Till Fail';
+      }else{
+        return reps + ' ' + type[0].toUpperCase() + type.substring(1);
+      }
+    };
+    $scope.formatRest = function(rest){
+      if(rest === 0){
+        return 'None';
+      }else{
+        return rest + ' Sec';
+      }
+    };
+
       setDefaultNewWorkout();
       queryRegimes();
 
