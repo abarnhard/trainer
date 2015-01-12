@@ -18,12 +18,8 @@ html.no-js(ng-app='trainer', lang='en')
     script(src='/vendor/fullcalendar/dist/fullcalendar.min.js')
     script(src='/vendor/foundation/js/vendor/modernizr.js')
   body
-    #wrap(ng-cloak)
-      #main
-        include views/nav/nav
-        include views/main/main
-    #footer &nbsp;
-      //-include views/footer/footer
+    include views/nav/nav
+    include views/main/main
 
     script(src='/vendor/foundation/js/foundation.min.js')
     script(src='/vendor/alertifyjs/dist/js/alertify.js')

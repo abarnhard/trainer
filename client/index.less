@@ -24,30 +24,14 @@
 /* ---------------------------------------------------------------------- */
 
 /* ---------------------------     MAIN      ---------------------------- */
-* {
-  margin:0;
-  padding:0;
-}
-
-html, body {
-  height: 100%;
-}
-
-#wrap {
-  min-height: 100%;
-}
-
-#main {
-  overflow: auto;
+.most-height {
+  min-height: 93%;
 }
 
 .full-height {
   min-height: 100%;
 }
 
-div[ui-view] {
-  min-height: 100%;
-}
 /* ------------------------------------------------------------------- */
 
 /* --------------------------    NAV BAR    -------------------------- */
@@ -102,12 +86,15 @@ div[ui-view] {
 .gym {
   background-image: url(/assets/img/gym.jpg);
   background-size: cover;
-  width: 970px;
-  height: 650px;
+  //height: 100%;
+  //width: 100%;
+  //width: 970px;
+  //height: 650px;
 }
 
 .gym form {
   padding-top: 2em;
+  padding-bottom: 75%;
 }
 
 .gym fieldset legend {
